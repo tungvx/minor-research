@@ -1,0 +1,250 @@
+parse([con sông, dài nhất, trong, pennsylvania, là, gì, ?], answer(A,longest(A,(river(A),loc(A,B),const(B,stateid(pennsylvania)))))).
+parse([sông, ngắn nhất, là, gì, ?], answer(A,shortest(A,river(A)))).
+parse([những, tiểu bang, giáp, iowa , ?], answer(A,(state(A),next_to(A,B),const(B,stateid(iowa))))).
+parse([diện tích, của, tiểu bang, texas, là, gì, ?], answer(A,(area(B,A),const(B,stateid(texas))))).
+parse([dân số, của, các, tiểu bang, mà, Mississippi, chạy, qua, là, gì, ?], answer(A,(population(B,A),state(B),const(C,riverid(mississippi)),traverse(C,B)))).
+parse([tiểu bang, nào, mà, dallas, ở, trong, ?], answer(A,(state(A),const(B,cityid(dallas,_)),loc(B,A)))).
+parse([có, bao nhiêu, người, sống, ở, Hawaii , ?], answer(A,(population(B,A),const(B,stateid(hawaii))))).
+parse([diện tích, của, texas, là, gì, ?], answer(A,(area(B,A),const(B,stateid(texas))))).
+parse([những, tiểu bang, nào, giáp biên giới, những, tiểu bang, giáp với, tiểu bang, với, dân số, lớn nhất, ?], answer(A,(state(A),next_to(A,B),state(B),next_to(B,C),largest(D,(state(C),population(C,D)))))).
+parse([đâu, là, austin , ?], answer(A,(loc(B,A),const(B,cityid(austin,_))))).
+parse([sông, gì, đi, qua, hầu hết, các, tiểu bang, ?], answer(A,most(A,B,(river(A),traverse(A,B),state(B))))).
+parse([thủ phủ, của, tiểu bang, với, điểm, cao nhất, là, gì, ?], answer(A,(capital(A),loc(A,B),highest(C,(state(B),loc(C,B),place(C)))))).
+parse([có, bao nhiêu, con sông, đang, có, trong, idaho , ?], answer(A,count(B,(river(B),loc(B,C),const(C,stateid(idaho))),A))).
+parse([tiểu bang, nào, có, thủ phủ, salem , ?], answer(A,(state(A),loc(B,A),capital(B),const(B,cityid(salem,_))))).
+parse([có, bao nhiêu, tiểu bang, có, một, thành phố, được, gọi, là, rochester , ?], answer(A,count(B,(state(B),loc(C,B),const(C,cityid(rochester,_))),A))).
+parse([tiểu bang, nào, giáp, pennsylvania, có, dân số, lớn nhất, ?], answer(A,largest(B,(state(A),next_to(A,C),const(C,stateid(pennsylvania)),population(A,B))))).
+parse([thủ phủ, của, tiểu bang, với, con sông, dài nhất, là, gì, ?], answer(A,(capital(A),loc(A,B),longest(C,(state(B),loc(C,B),river(C)))))).
+parse([những, tiểu bang, nào, giáp biên giới, missouri , ?], answer(A,(state(A),next_to(A,B),const(B,stateid(missouri))))).
+parse([tiểu bang, lớn nhất, trong, lục địa, us, là, gì, ?], answer(A,largest(A,(state(A),loc(A,B),const(B,countryid(usa)))))).
+parse([danh sách, các, tiểu bang, ?], answer(A,state(A))).
+parse([tiểu bang, nào, có, thành phố, lớn, ?], answer(A,largest(B,(state(A),loc(B,A),city(B))))).
+parse([North Dakota ,lớn, như thế nào, ?], answer(A,(size(B,A),const(B,stateid('north dakota'))))).
+parse([có, bao nhiêu, người, sống, trong, washington, dc , ?], answer(A,(population(B,A),const(B,cityid(washington,dc))))).
+parse([tiểu bang, nào, có, mật độ, dân số, lớn nhất, ?], answer(A,largest(B,(state(A),density(A,B))))).
+parse([điểm, thấp nhất, của, tất cả, các, tiểu bang, mà, sông, colorado, chạy, qua, là, gì, ?], answer(A,lowest(A,(place(A),loc(A,B),state(B),const(C,riverid(colorado)),river(C),traverse(C,B))))).
+parse([có, bao nhiêu, thành phố, lớn, trong, các, tiểu bang, giáp, nebraska , ?], answer(A,count(B,(major(B),city(B),loc(B,C),state(C),next_to(C,D),const(D,stateid(nebraska))),A))).
+parse([có, bao nhiêu, người, sống, ở, Chicago , ?], answer(A,(population(B,A),const(B,cityid(chicago,_))))).
+parse([tiểu bang, nào, có, thành phố, với, dân số, nhiều nhất, ?], answer(A,(state(A),loc(B,A),largest(C,(city(B),population(B,C)))))).
+parse([những, tiểu bang, nào, giáp biên giới, Kentucky , ?], answer(A,(state(A),next_to(A,B),const(B,stateid(kentucky))))).
+parse([có, bao nhiêu, người, sống, trong, houston , ?], answer(A,(population(B,A),const(B,cityid(houston,_))))).
+parse([những, con sông, gì, chạy, qua, west virginia , ?], answer(A,(river(A),traverse(A,B),const(B,stateid('west virginia'))))).
+parse([kể tên,  tất cả, các, hồ, của, us , ?], answer(A,(lake(A),loc(A,B),const(B,countryid(usa))))).
+parse([điểm, cao nhất, trong, Montana, là, gì, ?], answer(A,highest(A,(place(A),loc(A,B),const(B,stateid(montana)))))).
+parse([chiều dài, của, con sông, đi ngang, qua, hầu hết, các, tiểu bang, là, gì, ?], answer(A,(len(B,A),most(B,C,(river(B),traverse(B,C),state(C)))))).
+parse([sông, gì, chạy, qua, virginia , ?], answer(A,(river(A),traverse(A,B),const(B,stateid(virginia))))).
+parse([có, bao nhiêu, công dân, sống, ở, California , ?], answer(A,(population(B,A),const(B,stateid(california))))).
+parse([tiểu bang, nào, mà, des moines, nằm, trong, ?], answer(A,(state(A),const(B,cityid('des moines',_)),loc(B,A)))).
+parse([có, bao nhiêu, thành phố, usa có, ?], answer(A,count(B,(city(B),const(C,countryid(usa)),loc(B,C)),A))).
+parse([thủ phủ, của, California, là, gì, ?], answer(A,(capital(A),loc(A,B),const(B,stateid(california))))).
+parse([những, con sông, lớn, nào, chạy, qua, illinois , ?], answer(A,(major(A),river(A),traverse(A,B),const(B,stateid(illinois))))).
+parse([có, bao nhiêu, người, sống, ở, south Dakota , ?], answer(A,(population(B,A),const(B,stateid('south dakota'))))).
+parse([có, bao nhiêu, con sông, được, tìm thấy, trong, colorado , ?], answer(A,count(B,(river(B),loc(B,C),const(C,stateid(colorado))),A))).
+parse([bang, nhỏ nhất, theo, diện tích, là, gì, ?], answer(A,smallest(B,(state(A),area(A,B))))).
+parse([điểm, cao nhất, trong, Montana ,cao, bao nhiêu, ?], answer(A,(elevation(B,A),highest(B,(place(B),loc(B,C),const(C,stateid(montana))))))).
+parse([có, bao nhiêu, tiểu bang, Mississippi, chạy, qua, ?], answer(A,count(B,(state(B),const(C,riverid(mississippi)),traverse(C,B)),A))).
+parse([thủ phủ, đông, dân, nhất, tại, Hoa Kỳ, là, gì, ?], answer(A,largest(B,(population(A,B),capital(A),loc(A,C),const(C,countryid(usa)))))).
+parse([tiểu bang, nào, có, độ cao, cao nhất, ?], answer(A,highest(B,(state(A),loc(B,A),place(B))))).
+parse([những, tiểu bang, nào, Mississippi, chạy, qua, ?], answer(A,(state(A),const(B,riverid(mississippi)),traverse(B,A)))).
+parse([những, tiểu bang, nào, sông, Mississippi, chạy, qua, ?], answer(A,(state(A),const(B,riverid(mississippi)),river(B),traverse(B,A)))).
+parse([diện tích, maine, là, gì, ?], answer(A,(area(B,A),const(B,stateid(maine))))).
+parse([điểm, cao nhất, trong, texas, là, gì, ?], answer(A,highest(A,(place(A),loc(A,B),const(B,stateid(texas)))))).
+parse([điểm, cao nhất, của, Delaware ,cao, như thế nào, ?], answer(A,(elevation(B,A),highest(B,(place(B),loc(B,C),const(C,stateid(delaware))))))).
+parse([thành phố, lớn nhất, ở, Georgia, là, gì, ?], answer(A,largest(A,(city(A),loc(A,B),const(B,stateid(georgia)))))).
+parse([những, tiểu bang, nào, có, các, con sông, tên, là, colorado , ?], answer(A,(state(A),loc(B,A),const(B,riverid(colorado))))).
+parse([dân số, trung bình, mỗi, km, vuông, trong, pennsylvania, là, gì, ?], answer(A,(density(B,A),const(B,stateid(pennsylvania))))).
+parse([con sông, dài nhất, trong, bang, lớn nhất, là, gì, ?], answer(A,longest(A,(river(A),loc(A,B),largest(B,state(B)))))).
+parse([dân số, của, Mississippi, là, gì, ?], answer(A,(population(B,A),const(B,stateid(mississippi))))).
+parse([những, con sông, gì, không, chạy, qua, Tennessee , ?], answer(A,(river(A),\+ (traverse(A,B),const(B,stateid(tennessee)))))).
+parse([thủ phủ, của, Utah, là, gì, ?], answer(A,(capital(A),loc(A,B),const(B,stateid(utah))))).
+parse([dân số, của, denver, là, gì, ?], answer(A,(population(B,A),const(B,cityid(denver,_))))).
+parse([ngọn núi, cao nhất, trong, texas, là, gì, ?], answer(A,highest(A,(mountain(A),loc(A,B),const(B,stateid(texas)))))).
+parse([những, tiểu bang, nào, có, sông, chảy, qua, chúng , ?], answer(A,(state(A),loc(B,A),river(B),traverse(B,A)))).
+parse([thủ phủ, của, tiểu bang, với, dân số, lớn nhất, là, gì, ?], answer(A,(capital(A),loc(A,B),largest(C,(state(B),population(B,C)))))).
+parse([có, bao nhiêu, người, sống, ở, thành phố, lớn nhất, trong, tiểu bang, new york , ?], answer(A,(population(B,A),largest(B,(city(B),loc(B,C),const(C,stateid('new york')),state(C)))))).
+parse([con sông, dài nhất, trong, florida, là, gì, ?], answer(A,longest(A,(river(A),loc(A,B),const(B,stateid(florida)))))).
+parse([thủ phủ, tiểu bang, lớn nhất, theo, dân số, là, gì, ?], answer(A,largest(B,(state(C),capital(C,A),population(A,B))))).
+parse([tiểu bang, nào, có, dân số, đô thị, trung bình, nhỏ nhất, ?], answer(A,smallest(B,(state(A),density(A,B))))).
+parse([diện tích, của, New Mexico, là, gì, ?], answer(A,(area(B,A),const(B,stateid('new mexico'))))).
+parse([dân số, của, các, tiểu bang, mà, Mississippi, chạy, qua, là, gì, ?], answer(A,(population(B,A),state(B),const(C,riverid(mississippi)),traverse(C,B)))).
+parse([bạn, có, thể, nói, gì,  cho, tôi, về, dân số, của, missouri , ?], answer(A,(population(B,A),const(B,stateid(missouri))))).
+parse([các, thành phố, lớn, ở, north carolina, là, gì, ?], answer(A,(major(A),city(A),loc(A,B),const(B,stateid('north carolina'))))).
+parse([dân số, của, austin, là, gì, ?], answer(A,(population(B,A),const(B,cityid(austin,_))))).
+parse([có, bao nhiêu, con sông, trong, iowa , ?], answer(A,count(B,(river(B),loc(B,C),const(C,stateid(iowa))),A))).
+parse([thủ phủ, của, new jersey, là, gì, ?], answer(A,(capital(A),loc(A,B),const(B,stateid('new jersey'))))).
+parse([có, bao nhiêu, người, sống, ở, Minneapolis, minnesota , ?], answer(A,(population(B,A),const(B,cityid(minneapolis,mn))))).
+parse([chiều cao, của, ngọn núi, cao nhất, trong, texas, là, gì, ?], answer(A,(elevation(B,A),highest(B,(mountain(B),loc(B,C),const(C,stateid(texas))))))).
+parse([những, ngọn núi, nào, ở, Alaska , ?], answer(A,(mountain(A),loc(A,B),const(B,stateid(alaska))))).
+parse([thủ phủ, của, Maine, là, gì, ?], answer(A,(capital(A),loc(A,B),const(B,stateid(maine))))).
+parse([các, thành phố, lớn, ở, các, bang, mà, các, con sông, lớn, trong, virginia chạy, qua, là, gì, ?], answer(A,(major(A),city(A),loc(A,B),state(B),river(C),loc(C,D),const(D,stateid(virginia)),traverse(C,B)))).
+parse([sông, Mississippi , dài, như thế nào, ?], answer(A,(len(B,A),const(B,riverid(mississippi)),river(B)))).
+parse([tiểu bang, nào, có, hầu hết, dân số, ?], answer(A,largest(B,(state(A),population(A,B))))).
+parse([những, tiểu bang, nào, hàng xóm, với, maine , ?], answer(A,(state(A),next_to(A,B),const(B,stateid(maine))))).
+parse([con sông, dài nhất, trong, usa , dài, như thế nào, ?], answer(A,(len(B,A),longest(B,(river(B),loc(B,C),const(C,countryid(usa))))))).
+parse([tiểu bang, nào, có, mật độ, dân số, ít nhất, ?], answer(A,smallest(B,(state(A),density(A,B))))).
+parse([thành phố, nhỏ nhất, trong, tiểu bang, lớn nhất, là, gì, ?], answer(A,smallest(A,(city(A),loc(A,B),largest(B,state(B)))))).
+parse([điểm, cao nhất, của, tất cả, các, tiểu bang, là, gì, ?], answer(A,highest(A,(place(A),loc(A,B),state(B))))).
+parse([có, bao nhiêu, thành phố, trong, louisiana , ?], answer(A,count(B,(city(B),loc(B,C),const(C,stateid(louisiana))),A))).
+parse([có, bao nhiêu, người, sống, tại, thủ phủ, của, Georgia , ?], answer(A,(population(B,A),capital(B),loc(B,C),const(C,stateid(georgia))))).
+parse([những, tiểu bang, nào, có, những, điểm, cao hơn, so với, điểm, cao nhất, trong, colorado , ?], answer(A,(state(A),loc(B,A),place(B),higher(B,C),highest(C,(place(C),loc(C,D),const(D,stateid(colorado))))))).
+parse([điểm, cao nhất, trong, florida, là, gì, ?], answer(A,highest(A,(place(A),loc(A,B),const(B,stateid(florida)))))).
+parse([có, bao nhiêu, tiểu bang, không, có, sông, ?], answer(A,count(B,(state(B),\+ (loc(C,B),river(C))),A))).
+parse([các, thành phố, lớn, của, us, là, gì, ?], answer(A,(major(A),city(A),loc(A,B),const(B,countryid(usa))))).
+parse([tiểu bang, nào, có, nhiều, sông, lớn, nhất, ?], answer(A,most(A,B,(state(A),loc(B,A),major(B),river(B))))).
+parse([thành phố, lớn nhất, ở, usa, là, gì, ?], answer(A,largest(A,(city(A),loc(A,B),const(B,countryid(usa)))))).
+parse([những, tiểu bang, nào, không, có, tiểu bang, giáp , ?], answer(A,(state(A),\+ (next_to(A,B),state(B))))).
+parse([tiểu bang, nào, có, mật độ, dân số, thấp nhất, ?], answer(A,smallest(B,(state(A),density(A,B))))).
+parse([những, bang, giáp biên giới, tiểu bang, với, nhiều, thành phố, lớn, nhất, ?], answer(A,(state(A),next_to(A,B),most(B,C,(state(B),loc(C,B),major(C),city(C)))))).
+parse([dân số, của, thành phố, New York, là, gì, ?], answer(A,(population(B,A),const(B,cityid('new york',_))))).
+parse([tiểu bang, nào, có, diện tích, lớn nhất, ?], answer(A,largest(B,(state(A),area(A,B))))).
+parse([có, bao nhiêu, thành phố, trong, Montana , ?], answer(A,count(B,(city(B),loc(B,C),const(C,stateid(montana))),A))).
+parse([tên, các, tiểu bang, mà, không, có, tiểu bang, xung quanh, ?], answer(A,(state(A),\+ (next_to(A,B),state(B))))).
+parse([mật độ, dân số, của, mỗi, tiểu bang, us, là, gì, ?], answer(A,(density(B,A),state(B)))).
+parse([dân số, của, tiểu bang, nhỏ nhất, là, gì , ?], answer(A,smallest(B,(population(B,A),state(B))))).
+parse([dân số, của, Texas, là, gì, ?], answer(A,(population(B,A),const(B,stateid(texas))))).
+parse([có, bao nhiêu, tiểu bang, iowa , giáp biên giới, ?], answer(A,count(B,(state(B),const(C,stateid(iowa)),next_to(C,B)),A))).
+parse([con sông, dài nhất, ở, usa, là, gì, ?], answer(A,longest(A,(river(A),loc(A,B),const(B,countryid(usa)))))).
+parse([bạn, có, thể, cho, tôi, biết, điểm, cao nhất, trong, tiểu bang, Oregon, là, gì, ?], answer(A,highest(A,(place(A),loc(A,B),state(B),const(B,stateid(oregon)))))).
+parse([tiểu bang, nào, có, điểm, cao nhất, của, những, tiểu bang, mà, sông, colorado , đi, qua, ?], answer(A,(state(A),loc(B,A),highest(B,(place(B),loc(B,C),state(C),const(D,riverid(colorado)),river(D),traverse(D,C)))))).
+parse([độ cao, của, điểm, cao nhất, trong, usa, là, gì, ?], answer(A,(elevation(B,A),highest(B,(place(B),loc(B,C),const(C,countryid(usa))))))).
+parse([diện tích, của, tất cả, các, tiểu bang, kết hợp, là, gì, ?], answer(A,sum(B,(area(C,B),state(C)),A))).
+parse([những, tiểu bang, nào, sông, colorado, thông, qua , ?], answer(A,(state(A),const(B,riverid(colorado)),river(B),traverse(B,A)))).
+parse([có, bao nhiêu, người, sống, trong, kansas , ?], answer(A,(population(B,A),const(B,stateid(kansas))))).
+parse([có, bao nhiêu, con sông, chạy, qua, texas , ?], answer(A,count(B,(river(B),traverse(B,C),const(C,stateid(texas))),A))).
+parse([có, bao nhiêu, công dân, trong, alabama , ?], answer(A,(population(B,A),const(B,stateid(alabama))))).
+parse([những, con sông, gì, chảy, qua colorado , ?], answer(A,(river(A),traverse(A,B),const(B,stateid(colorado))))).
+parse([có, bao nhiêu, tiểu bang, giáp biên giới, Texas , ?], answer(A,count(B,(state(B),next_to(B,C),const(C,stateid(texas))),A))).
+parse([bang, đông, dân, nhất, giáp, oklahoma, là, gì, ?], answer(A,largest(B,(population(A,B),state(A),next_to(A,C),const(C,stateid(oklahoma)))))).
+parse([tiểu bang, nào, có, độ cao, cao nhất, ?], answer(A,highest(B,(state(A),loc(B,A),place(B))))).
+parse([dân số, của, tiểu bang, với, mật độ, dân số, cao nhất, là, gì, ?], answer(A,(population(B,A),largest(C,(state(B),density(B,C)))))).
+parse([tiểu bang, nào, giáp biên giới, Kentucky, ?], answer(A,(state(A),next_to(A,B),const(B,stateid(kentucky))))).
+parse([đâu, là, houston , ?], answer(A,(loc(B,A),const(B,cityid(houston,_))))).
+parse([điểm, cao nhất, ở, New Mexico, là, gì, ?], answer(A,highest(A,(place(A),loc(A,B),const(B,stateid('new mexico')))))).
+parse([tiểu bang, nào, có, điểm, thấp nhất, mà, giáp, idaho , ?], answer(A,(state(A),loc(B,A),lowest(B,place(B)),next_to(A,C),const(C,stateid(idaho))))).
+parse([thành phố, lớn nhất, trong, texas, là, gì, ?], answer(A,largest(A,(city(A),loc(A,B),const(B,stateid(texas)))))).
+parse([những, con sông, gì, chạy, qua, các, bang, giáp biên giới, tiểu bang, với, thủ phủ, atlanta , ?], answer(A,(river(A),traverse(A,B),state(B),next_to(B,C),state(C),loc(D,C),capital(D),const(D,cityid(atlanta,_))))).
+parse([tiểu bang, nào, là, tiểu bang, nhiều, sông, nhất , ?], answer(A,(state(A),most(A,B,(state(A),loc(B,A),river(B)))))).
+parse([các, sông, lớn nhất, trong, illinois, là, gì, ?], answer(A,largest(A,(river(A),loc(A,B),const(B,stateid(illinois)))))).
+parse([những, con sông, nào, không, chạy, qua, texas , ?], answer(A,(river(A),\+ (traverse(A,B),const(B,stateid(texas)))))).
+parse([thành phố, thủ phủ, trong, texas, là, gì, ?], answer(A,(capital(A),city(A),loc(A,B),const(B,stateid(texas))))).
+parse([có, bao nhiêu, tiểu bang, giáp biên giới, với, tiểu bang, với, dân số, lớn nhất, ?], answer(A,count(B,(state(B),next_to(B,C),largest(D,(state(C),population(C,D)))),A))).
+parse([dân số, của, Tucson, là, gì, ?], answer(A,(population(B,A),const(B,cityid(tucson,_))))).
+parse([dân số, của, dallas, là, gì, ?], answer(A,(population(B,A),const(B,cityid(dallas,_))))).
+parse([tiểu bang, nào, giáp hầu hết, các, tiểu bang, ?], answer(A,most(A,B,(state(A),next_to(A,B),state(B))))).
+parse([thủ phủ, tiểu bang, nào, có, dân số, thấp nhất, ?], answer(A,smallest(B,(capital(A),population(A,B))))).
+parse([thủ phủ, của, Georgia, là, gì, ?], answer(A,(capital(A),loc(A,B),const(B,stateid(georgia))))).
+parse([những, tiểu bang, nào, giáp biên giới, Montana , ?], answer(A,(state(A),next_to(A,B),const(B,stateid(montana))))).
+parse([thành phố, lớn nhất, trong, tiểu bang, ráp ranh,texas, là, gì, ?], answer(A,largest(A,(city(A),loc(A,B),state(B),next_to(B,C),const(C,stateid(texas)))))).
+parse([thủ phủ, của, iowa, là, gì, ?], answer(A,(capital(A),loc(A,B),const(B,stateid(iowa))))).
+parse([tiểu bang, nào, giáp với, ít, tiểu bang, nhất, ngoại trừ, Alaska, và, Hawaii, ?], answer(A,fewest(A,B,(state(A),next_to(A,B),\+const(A,stateid(alaska)),\+const(A,stateid(hawaii)))))).
+parse([các, thành phố, lớn, trong, wyoming, là, gì, ?], answer(A,(major(A),city(A),loc(A,B),const(B,stateid(wyoming))))).
+parse([những, tiểu bang, nào, có, thành phố, được, đặt tên, salt lake city , ?], answer(A,(state(A),loc(B,A),city(B),const(B,cityid('salt lake city',_))))).
+parse([sông, Missouri ,dài, như thế nào, ?], answer(A,(len(B,A),const(B,riverid(missouri)),river(B)))).
+parse([bao nhiêu, thành phố, đang, có, trong, tiểu bang, thống nhất , ?], answer(A,count(B,(city(B),loc(B,C),const(C,countryid(usa))),A))).
+parse([những, tiểu bang, nào, giáp biên giới, các, tiểu bang, với, hầu hết, các, thành phố, ?], answer(A,(state(A),next_to(A,B),most(B,C,(state(B),loc(C,B),city(C)))))).
+parse([con sông, dài nhất, mà, vượt qua, các,  tiểu bang,giáp biên giới, tiểu bang, mà, ráp ranh,hầu hết, các, tiểu bang, là, gì, ?], answer(A,longest(A,(river(A),traverse(A,B),state(B),next_to(B,C),most(C,D,(state(C),next_to(C,D),state(D))))))).
+parse([con sông, dài nhất, trong, us, là, gì, ?], answer(A,longest(A,(river(A),loc(A,B),const(B,countryid(usa)))))).
+parse([cho, tôi, tất cả, những, hồ, lớn, trong, us , ?], answer(A,(major(A),lake(A),loc(A,B),const(B,countryid(usa))))).
+parse([tiểu bang, nào, có, hầu hết, các, thành phố, ?], answer(A,most(A,B,(state(A),loc(B,A),city(B))))).
+parse([thủ phủ, lớn nhất, là, gì, ?], answer(A,largest(A,capital(A)))).
+parse([dân số, của, illinois, là, gì, ?], answer(A,(population(B,A),const(B,stateid(illinois))))).
+parse([thành phố, lớn nhất, theo, dân số, trong, minnesota, là, gì, ?], answer(A,largest(B,(city(A),loc(A,C),const(C,stateid(minnesota)),population(A,B))))).
+parse([thủ phủ, của, colorado, là, gì, ?], answer(A,(capital(A),loc(A,B),const(B,stateid(colorado))))).
+parse([dân số, của, thủ phủ, của, tiểu bang, lớn nhất, mà, Mississippi, chạy, qua, là, gì, ?], answer(A,(population(B,A),capital(B),loc(B,C),largest(C,(state(C),const(D,riverid(mississippi)),traverse(D,C)))))).
+parse([tiểu bang, nào, có, hầu hết, các, con sông, chảy, qua, nó, ?], answer(A,most(A,B,(state(A),loc(B,A),river(B),traverse(B,A))))).
+parse([guadalupe peak, cao, như thế nào, ?], answer(A,(elevation(B,A),const(B,placeid('guadalupe peak'))))).
+parse([sông, chảy, qua, texas , ?], answer(A,(river(A),traverse(A,B),const(B,stateid(texas))))).
+parse([tiểu bang, nào, sông, Chattahoochee, chạy, qua, ?], answer(A,(state(A),const(B,riverid(chattahoochee)),river(B),traverse(B,A)))).
+parse([dân số, của, springfield, South Dakota, là, gì, ?], answer(A,(population(B,A),const(B,cityid(springfield,sd))))).
+parse([điểm, cao nhất, trong, us, là, gì, ?], answer(A,highest(A,(place(A),loc(A,B),const(B,countryid(usa)))))).
+parse([chiều cao, của, mount McKinley, là, gì, ?], answer(A,(elevation(B,A),const(B,placeid('mount mckinley'))))).
+parse([diện tích, florida, là, gì, ?], answer(A,(area(B,A),const(B,stateid(florida))))).
+parse([mật độ, dân số, của, bang, lớn nhất, là, gì, ?], answer(A,(density(B,A),largest(B,state(B))))).
+parse([điểm, cao nhất, trong, tiểu bang, giáp biên giới, Georgia, là, gì, ?], answer(A,highest(A,(place(A),loc(A,B),state(B),next_to(B,C),const(C,stateid(georgia)))))).
+parse([tiểu bang, nào, có, điểm, cao nhất, trong, us , ?], answer(A,(state(A),loc(B,A),highest(B,(place(B),loc(B,C),const(C,countryid(usa))))))).
+parse([texas ,lớn, như thế nào, ?], answer(A,(size(B,A),const(B,stateid(texas))))).
+parse([điểm, cao nhất, trong, kansas, là, gì, ?], answer(A,highest(A,(place(A),loc(A,B),const(B,stateid(kansas)))))).
+parse([mount McKinley ,cao, bao nhiêu, ?], answer(A,(elevation(B,A),const(B,placeid('mount mckinley'))))).
+parse([điểm, cao nhất, trong, Montana ,cao, như thế nào, ?], answer(A,(elevation(B,A),highest(B,(place(B),loc(B,C),const(C,stateid(montana))))))).
+parse([điểm, thấp nhất, trong, Massachusetts, là, gì, ?], answer(A,lowest(A,(place(A),loc(A,B),const(B,stateid(massachusetts)))))).
+parse([bang, lớn nhất, nằm sát, giáp biên giới, California, là, gì, ?], answer(A,largest(A,(state(A),next_to(A,B),const(B,stateid(california)))))).
+parse([ngọn núi, cao nhất, ở, Mỹ, là, gì, ?], answer(A,highest(A,(mountain(A),loc(A,B),const(B,countryid(usa)))))).
+parse([con sông, dài nhất, chảy, qua, một, tiểu bang, ráp ranh,Tennessee, là, gì, ?], answer(A,longest(A,(river(A),traverse(A,B),state(B),next_to(B,C),const(C,stateid(tennessee)))))).
+parse([có, bao nhiêu, tiểu bang, missouri , giáp biên giới, ?], answer(A,count(B,(state(B),const(C,stateid(missouri)),next_to(C,B)),A))).
+parse([dân số, của, thành phố, lớn nhất, trong, tiểu bang, có, diện tích, lớn nhất, là, gì, ?], answer(A,(population(B,A),largest(B,(city(B),loc(B,C),largest(D,(state(C),area(C,D)))))))).
+parse([tiểu bang, nào, mà, pittsburgh, ở, trong, ?], answer(A,(state(A),const(B,cityid(pittsburgh,_)),loc(B,A)))).
+parse([tiểu bang, nào, có, độ cao, cao nhất, ?], answer(A,(state(A),loc(B,A),highest(B,place(B))))).
+parse([những, tiểu bang, nào, có, thị trấn, tên, là, springfield , ?], answer(A,(state(A),loc(B,A),const(B,cityid(springfield,_))))).
+parse([tiểu bang, nào, giáp Hawaii, ?], answer(A,(state(A),next_to(A,B),const(B,stateid(hawaii))))).
+parse([có, bao nhiêu, người, sống, ở, New Mexico , ?], answer(A,(population(B,A),const(B,stateid('new mexico'))))).
+parse([những, tiểu bang, nào, giáp biên giới, những, tiểu bang, giáp biên giới, những, tiểu bang, giáp biên giới, những, tiểu bang, giáp biên giới, Texas , ?], answer(A,(state(A),next_to(A,B),state(B),next_to(B,C),state(C),next_to(C,D),state(D),next_to(D,E),const(E,stateid(texas))))).
+parse([các, tiểu bang, rằng, potomac, chạy, qua, là, gì, ?], answer(A,(state(A),const(B,riverid(potomac)),traverse(B,A)))).
+parse([Alaska ,lớn, như thế nào, ?], answer(A,(size(B,A),const(B,stateid(alaska))))).
+parse([các, thành phố, lớn, của, Texas, là, gì, ?], answer(A,(major(A),city(A),loc(A,B),const(B,stateid(texas))))).
+parse([sông, nào, chạy, qua, hầu hết, các, tiểu bang, ?], answer(A,most(A,B,(river(A),traverse(A,B),state(B))))).
+parse([có, bao nhiêu, thành phố, lớn, trong, các, tiểu bang, giáp, Utah , ?], answer(A,count(B,(major(B),city(B),loc(B,C),state(C),next_to(C,D),const(D,stateid(utah))),A))).
+parse([những, thành phố, nào, trong, texas, có, số lượng, cao nhất, của, người dân , ?], answer(A,largest(B,(city(A),loc(A,C),const(C,stateid(texas)),population(A,B))))).
+parse([dân số, của, các, tiểu bang, mà, Mississippi, chạy, qua, là, gì, ?], answer(A,(population(B,A),state(B),const(C,riverid(mississippi)),traverse(C,B)))).
+parse([những, con sông, nào, trong, alaska , ?], answer(A,(river(A),loc(A,B),const(B,stateid(alaska))))).
+parse([diện tích, south Carolina, là, gì, ?], answer(A,(area(B,A),const(B,stateid('south carolina'))))).
+parse([thủ phủ, của, tiểu bang, có, những, thành phố, tên, Durham, là, gì, ?], answer(A,(capital(A),loc(A,B),state(B),loc(C,B),city(C),const(C,cityid(durham,_))))).
+parse([sông, ngắn nhất, trong, iowa, là, gì, ?], answer(A,shortest(A,(river(A),loc(A,B),const(B,stateid(iowa)))))).
+parse([tiểu bang, với, độ cao, cao nhất, ở, Hoa Kỳ, là, gì, ?], answer(A,(state(A),loc(B,A),highest(B,(place(B),loc(B,C),const(C,countryid(usa))))))).
+parse([có, bao nhiêu, người, sống, ở, Mississippi , ?], answer(A,(population(B,A),const(B,stateid(mississippi))))).
+parse([dân số, của, tất cả, 50, tiểu bang, là, gì, ?], answer(A,sum(B,(population(C,B),state(C)),A))).
+parse([sông, nào, chảy, qua, kansas , ?], answer(A,(river(A),traverse(A,B),const(B,stateid(kansas))))).
+parse([mà, là, vị trí, thấp nhất, trong, iowa , ?], answer(A,lowest(A,(place(A),loc(A,B),const(B,stateid(iowa)))))).
+parse([tiểu bang, nào, mà, kalamazoo, ở, trong, ?], answer(A,(state(A),const(B,cityid(kalamazoo,_)),loc(B,A)))).
+parse([những, tiểu bang, nào, sông, Missouri, đi, qua, ?], answer(A,(state(A),const(B,riverid(missouri)),traverse(B,A)))).
+parse([những, tiểu bang, nào, giáp biên giới, ohio , ?], answer(A,(state(A),next_to(A,B),const(B,stateid(ohio))))).
+parse([những, bang, giáp biên giới, tiểu bang, có, diện tích, nhỏ nhất, ?], answer(A,(state(A),next_to(A,B),smallest(C,(state(B),area(B,C)))))).
+parse([kích thước, của, florida, là, gì, ?], answer(A,(size(B,A),const(B,stateid(florida))))).
+parse([bang, nhỏ nhất, nằm sát, giáp biên giới, Texas, là, gì, ?], answer(A,smallest(A,(state(A),next_to(A,B),const(B,stateid(texas)))))).
+parse([tiểu bang, nào, có, dân số, lớn nhất, ?], answer(A,largest(B,(state(A),population(A,B))))).
+parse([chiều dài, của, dòng sông, chảy, qua, hầu hết, các, tiểu bang, là, gì, ?], answer(A,(len(B,A),most(B,C,(river(B),traverse(B,C),state(C)))))).
+parse([có, bao nhiêu, người, sống, trong, san francisco , ?], answer(A,(population(B,A),const(B,cityid('san francisco',_))))).
+parse([thành phố, lớn nhất, trong, usa , có, bao nhiêu, công dân, ?], answer(A,(population(B,A),largest(B,city(B))))).
+parse([những, con sông, gì, chảy, qua, tiểu bang, với, dân số, lớn nhất, ?], answer(A,(river(A),traverse(A,B),largest(C,(state(B),population(B,C)))))).
+parse([tiểu bang, nào, có, mật độ, dân số, cao nhất, ?], answer(A,largest(B,(state(A),density(A,B))))).
+parse([thủ phủ, của, Indiana, là, gì, ?], answer(A,(capital(A),loc(A,B),const(B,stateid(indiana))))).
+parse([tiểu bang, nào, có, thủ phủ, lớn nhất, ?], answer(A,(state(A),loc(B,A),largest(B,capital(B))))).
+parse([dân số, của, tiểu bang, có, diện tích, lớn nhất, là, gì, ?], answer(A,(population(B,A),largest(C,(state(B),area(B,C)))))).
+parse([dân số, của, tiểu bang, ráp ranh,hầu hết, các, tiểu bang, là, gì, ?], answer(A,(population(B,A),most(B,C,(state(B),next_to(B,C),state(C)))))).
+parse([đâu, là, thành phố, nhỏ nhất, ?], answer(A,(loc(B,A),smallest(B,city(B))))).
+parse([các, thành phố, lớn, trong, bang, lớn nhất, là, gì, ?], answer(A,(major(A),city(A),loc(A,B),largest(B,state(B))))).
+parse([bạn, có, thể, cho, tôi, biết, thủ phủ, của, texas , ?], answer(A,(capital(A),loc(A,B),const(B,stateid(texas))))).
+parse([con sông, dài nhất, ở, California, là, gì, ?], answer(A,longest(A,(river(A),loc(A,B),const(B,stateid(california)))))).
+parse([tổng, diện tích, của, usa, là, gì, ?], answer(A,(area(B,A),const(B,countryid(usa))))).
+parse([trong,tiểu bang, nào, mà, điểm, cao nhất, trong, usa, tồn tại, ?], answer(A,(loc(B,A),state(A),highest(B,(place(B),loc(B,C),const(C,countryid(usa))))))).
+parse([các, thành phố, ở, tiểu bang, mà, Mississippi, chạy, qua, là, gì, ?], answer(A,(city(A),loc(A,B),state(B),traverse(C,B),const(C,riverid(mississippi))))).
+parse([dân số, của, boulder, là, những, gì , ?], answer(A,(population(B,A),const(B,cityid(boulder,_))))).
+parse([điểm, thấp nhất, trong, wisconsin, là, gì, ?], answer(A,lowest(A,(place(A),loc(A,B),const(B,stateid(wisconsin)))))).
+parse([sông, nào, chạy, qua, hầu hết, các, tiểu bang, ?], answer(A,most(A,B,(river(A),traverse(A,B),state(B))))).
+parse([con sông, dài nhất, ở, Hoa Kỳ, là, gì, ?], answer(A,longest(A,(river(A),loc(A,B),const(B,countryid(usa)))))).
+parse([thành phố, nào, có, dân số, ít nhất, ?], answer(A,smallest(B,(city(A),population(A,B))))).
+parse([thành phố, nào, có, dân số, lớn nhất, ?], answer(A,largest(B,(city(A),population(A,B))))).
+parse([tổng, dân số, của, các, tiểu bang, giáp biên giới, Texas, là, gì, ?], answer(A,sum(B,(population(C,B),state(C),next_to(D,C),const(D,stateid(texas))),A))).
+parse([những, con sông, gì, trong, Utah , ?], answer(A,(river(A),loc(A,B),const(B,stateid(utah))))).
+parse([những, tiểu bang, nào, giáp biên giới, những, tiểu bang, giáp biên giới, colorado , ?], answer(A,(state(A),next_to(A,B),state(B),next_to(B,C),const(C,stateid(colorado))))).
+parse([những, con sông, nào, chảy, qua, Alaska , ?], answer(A,(river(A),traverse(A,B),const(B,stateid(alaska))))).
+parse([thủ phủ, của, bang, có, điểm, thấp nhất, là, gì, ?], answer(A,(capital(A),loc(A,B),state(B),loc(C,B),lowest(C,place(C))))).
+parse([những, gì các, thành phố, trong, texas có, dân số, cao nhất, ?], answer(A,largest(B,(city(A),loc(A,C),const(C,stateid(texas)),population(A,B))))).
+parse([bang, lớn nhất, đi, qua, bởi, sông, Mississippi, là, gì, ?], answer(A,largest(A,(state(A),traverse(B,A),const(B,riverid(mississippi)))))).
+parse([bang, lớn nhất, trong, usa, là, gì, ?], answer(A,largest(A,(state(A),loc(A,B),const(B,countryid(usa)))))).
+parse([có, bao nhiêu, người, sống, ở, Rhode Island , ?], answer(A,(population(B,A),const(B,stateid('rhode island'))))).
+parse([có, bao nhiêu, tiểu bang, giáp biên giới, các, tiểu bang, ráp ranh, hầu hết, các, tiểu bang, ?], answer(A,count(B,(state(B),next_to(B,C),most(C,D,(state(C),next_to(C,D),state(D)))),A))).
+parse([rio grande , dài, như thế nào, ?], answer(A,(len(B,A),const(B,riverid('rio grande'))))).
+parse([chiều dài, của, sông, colorado, trong, texas, là, gì, ?], answer(A,(len(B,A),const(B,riverid(colorado)),river(B),loc(B,C),const(C,stateid(texas))))).
+parse([sông, gì, dài nhất, ở, Hoa Kỳ , ?], answer(A,longest(A,(river(A),loc(A,B),const(B,countryid(usa)))))).
+parse([có, bao nhiêu, người, đang, trong, tiểu bang, nevada , ?], answer(A,(population(B,A),const(B,stateid(nevada))))).
+parse([độ cao, tối đa, của, san francisco, là, gì , ?], answer(A,highest(A,(place(A),loc(A,B),const(B,cityid('san francisco',_)))))).
+parse([điểm, thấp nhất, trong, usa, là, gì, ?], answer(A,lowest(A,(place(A),loc(A,B),const(B,countryid(usa)))))).
+parse([số lượng, các, tiểu bang, giáp,iowa , ?], answer(A,count(B,(state(B),next_to(B,C),const(C,stateid(iowa))),A))).
+parse([kể tên, các,  dòng sông, trong, Arkansas , ?], answer(A,(river(A),loc(A,B),const(B,stateid(arkansas))))).
+parse([thành phố, lớn nhất, ở, Mỹ, là, gì, ?], answer(A,largest(A,(city(A),loc(A,B),const(B,countryid(usa)))))).
+parse([những, tiểu bang, nào, giáp biên giới, các, tiểu bang, mà, Mississippi, đi, qua ?], answer(A,(state(A),next_to(A,B),state(B),const(C,riverid(mississippi)),traverse(C,B)))).
+parse([dân số, boston, Massachusetts, là, gì, ?], answer(A,(population(B,A),const(B,cityid(boston,ma))))).
+parse([có, bao nhiêu, tiểu bang, đang ,trong, usa , ?], answer(A,count(B,(state(B),loc(B,C),const(C,countryid(usa))),A))).
+parse([con sông, dài nhất, ở, Mỹ, là, gì, ?], answer(A,longest(A,(river(A),loc(A,B),const(B,countryid(usa)))))).
+parse([tiểu bang, với, mật độ, lớn nhất, trong, usa, là, gì, ?], answer(A,largest(B,(state(A),density(A,B),loc(A,C),const(C,countryid(usa)))))).
+parse([những, tiểu bang, nào, giáp biên giới, những, tiểu bang, giáp biên giới, những, tiểu bang, giáp biên giới, Florida , ?], answer(A,(state(A),next_to(A,B),state(B),next_to(B,C),state(C),next_to(C,D),const(D,stateid(florida))))).

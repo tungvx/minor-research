@@ -1,0 +1,9 @@
+These instructions are for windows:
+1. install glpk: 
+	. Download the current version of GLPK for Windows from https://sourceforge.net/projects/winglpk/
+	.  Unzip the file. Copy folder glpk-4.52 to "C:\Program Files\".
+	.  Add "C:\Program Files\glpk-4.52\w32" for 32-bit computer the environment variable PATH
+2. install Lpsolve55j
+3. install javailp
+4. install jpl
+5. install weka

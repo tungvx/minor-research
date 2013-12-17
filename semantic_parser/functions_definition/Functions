@@ -1,0 +1,355 @@
+﻿[
+	{
+		"name" : "area",
+		"argTypes" : ["StateId", "State", "CountryId"],
+		"returnedType" : "Number",
+		"execution" : "area(ArgVar,ReturnedVar),Arg",
+		"surfaceForms" : ["diện tích", "cây số"]
+	},
+	{
+		"name" : "capital",
+		"argTypes" : ["State", "CountryId", "StateId"],
+		"returnedType" : "City",
+		"execution" : "capital(ReturnedVar),loc(ReturnedVar,ArgVar),Arg",
+		"surfaceForms" : ["thủ phủ"]
+	},
+	{
+		"name" : "capitalCityToCapital",
+		"argTypes" : ["City", "CityId"],
+		"returnedType" : "City",
+		"execution" : "capital(ArgVar),Arg",
+		"surfaceForms" : ["thủ phủ"]
+	},
+	{
+		"name" : "capitalStringToList",
+		"argTypes" : ["String"],
+		"returnedType" : "City",
+		"execution" : "capital(ReturnedVar)",
+		"surfaceForms" : ["thủ phủ"],
+		"isBaseFunction" : true
+	},
+	{
+		"name" : "cityid",
+		"argTypes" : ["String"],
+		"returnedType" : "CityId",
+		"execution" : "const(ReturnedVar,cityid(ArgVar,_))",
+		"surfaceForms" : ["thành phố"],
+		"getFeatures" : "city(cityid(ArgVar,_))",
+		"isBaseFunction" : true
+	},
+	{
+		"name" : "cityInterfaceToCity",
+		"argTypes" : ["CityId"],
+		"returnedType" : "City",
+		"execution" : "city(ArgVar),Arg",
+		"surfaceForms" : ["thành phố"]
+	},
+	{
+		"name" : "cityCityInterfaceToCity",
+		"argTypes" : ["State", "StateId", "CountryId"],
+		"returnedType" : "City",
+		"execution" : "city(ReturnedVar),loc(ReturnedVar,ArgVar),Arg",
+		"surfaceForms" : ["thành phố"]
+	},
+	{
+		"name" : "cityStringToCity",
+		"argTypes" : ["String"],
+		"returnedType" : "City",
+		"execution" : "city(ReturnedVar)",
+		"surfaceForms" : ["thành phố"],
+		"isBaseFunction" : true
+	},
+	{
+		"name" : "count",
+		"argTypes" : ["State", "City", "River"],
+		"returnedType" : "Number",
+		"execution" : "count(ArgVar,(Arg),ReturnedVar)",
+		"surfaceForms" : ["bao nhiêu"]
+	},
+	{
+		"name" : "countryId",
+		"argTypes" : ["String"],
+		"returnedType" : "CountryId",
+		"execution" : "const(ReturnedVar,countryid(usa))",
+		"surfaceForms" : ["usa", "Hoa Kỳ","us", "Mỹ"],
+		"isBaseFunction" : true
+	},
+	{
+		"name" : "density",
+		"argTypes" : ["State", "StateId", "CountryId"],
+		"returnedType" : "Number",
+		"execution" : "density(ArgVar,ReturnedVar),Arg",
+		"surfaceForms" : ["mật độ", "trung bình"]
+	},
+	{
+		"name" : "elevation",
+		"argTypes" : ["PlaceId", "Place", "Mountain"],
+		"returnedType" : "Number",
+		"execution" : "elevation(ArgVar,ReturnedVar),Arg",
+		"surfaceForms" : ["cao", "chiều cao"]
+	},
+	{
+		"name" : "higher",
+		"argTypes" : ["Place"],
+		"returnedType" : "Place",
+		"execution" : "higher(ReturnedVar,ArgVar), Arg",
+		"surfaceForms" : ["cao hơn"]
+	},
+	{
+		"name" : "highestPlace",
+		"argTypes" : ["Place"],
+		"returnedType" : "Place",
+		"execution" : "highest(ReturnedVar,(Arg))",
+		"surfaceForms" : ["cao nhất", "tối đa"],
+		"argsNum" : 2
+	},
+	{
+		"name" : "highestMountain",
+		"argTypes" : ["Mountain"],
+		"returnedType" : "Mountain",
+		"execution" : "highest(ReturnedVar,(Arg))",
+		"surfaceForms" : ["cao nhất"],
+		"argsNum" : 2
+	},
+	{
+		"name" : "lake",
+		"argTypes" : ["State", "CountryId"],
+		"returnedType" : "Lake",
+		"execution" : "lake(ReturnedVar),loc(ReturnedVar,ArgVar),Arg",
+		"surfaceForms" : ["hồ"]
+	},
+	{
+		"name" : "largestState",
+		"argTypes" : ["State"],
+		"returnedType" : "State",
+		"execution" : "largest(ArgVar,(Arg))",
+		"surfaceForms" : ["lớn nhất", "cao nhất"]
+	},
+	{
+		"name" : "largestCity",
+		"argTypes" : ["City"],
+		"returnedType" : "City",
+		"execution" : "largest(ArgVar,(Arg))",
+		"surfaceForms" : ["lớn nhất", "cao nhất"]
+	},
+	{
+		"name" : "length",
+		"argTypes" : ["RiverId", "River"],
+		"returnedType" : "Number",
+		"execution" : "len(ArgVar,ReturnedVar),Arg",
+		"surfaceForms" : ["chiều dài"]
+	},
+	{
+		"name" : "longest",
+		"argTypes" : ["River"],
+		"returnedType" : "River",
+		"execution" : "longest(ArgVar,(Arg))",
+		"surfaceForms" : ["dài nhất", "lớn nhất"]
+	},
+	{
+		"name" : "lowest",
+		"argTypes" : ["Place"],
+		"returnedType" : "Place",
+		"execution" : "lowest(ArgVar,(Arg))",
+		"surfaceForms" : ["thấp nhất"]
+	},
+	{
+		"name" : "majorCity",
+		"argTypes" : ["City"],
+		"returnedType" : "City",
+		"execution" : "major(ArgVar),Arg",
+		"surfaceForms" : ["lớn", "chính"]
+	},
+	{
+		"name" : "majorRiver",
+		"argTypes" : ["River"],
+		"returnedType" : "River",
+		"execution" : "major(ArgVar),Arg",
+		"surfaceForms" : ["lớn", "chính"]
+	},
+	{
+		"name" : "majorLake",
+		"argTypes" : ["Lake"],
+		"returnedType" : "Lake",
+		"execution" : "major(ArgVar),Arg",
+		"surfaceForms" : ["lớn", "chính"]
+	},
+	{
+		"name" : "mostState",
+		"argTypes" : ["State"],
+		"returnedType" : "State",
+		"execution" : "most(ReturnedVar,ArgVar,(Arg))",
+		"surfaceForms" : ["hầu hết", "nhiều"],
+		"argsNum" : 2
+	},
+	{
+		"name" : "mostRiver",
+		"argTypes" : ["River"],
+		"returnedType" : "River",
+		"execution" : "most(ReturnedVar,ArgVar,(Arg))",
+		"surfaceForms" : ["hầu hết", "nhiều"],
+		"argsNum" : 2
+	},
+	{
+		"name" : "mountain",
+		"argTypes" : ["CountryId", "StateId"],
+		"returnedType" : "Mountain",
+		"execution" : "mountain(ReturnedVar),loc(ReturnedVar,ArgVar),Arg",
+		"surfaceForms" : ["ngọn núi", "đỉnh"]
+	},
+	{
+		"name" : "mountainStringToList",
+		"argTypes" : ["String"],
+		"returnedType" : "Mountain",
+		"execution" : "mountain(ReturnedVar)",
+		"surfaceForms" : ["ngọn núi", "đỉnh"],
+		"isBaseFunction" : true
+	},
+	{
+		"name" : "next_to",
+		"argTypes" : ["State", "StateId"],
+		"returnedType" : "State",
+		"execution" : "next_to(ReturnedVar,ArgVar),Arg",
+		"surfaceForms" : ["giáp biên giới", "ráp ranh", "hàng xóm"]
+	},
+	{
+		"name" : "placeid",
+		"argTypes" : ["String"],
+		"returnedType" : "PlaceId",
+		"execution" : "const(ReturnedVar ,placeid(ArgVar))",
+		"getFeatures" : "place(placeid(ArgVar))",
+		"isBaseFunction" : true
+	},
+	{
+		"name" : "place",
+		"argTypes" : ["StateId", "CountryId", "State", "CityId"],
+		"returnedType" : "Place",
+		"execution" : "place(ReturnedVar),loc(ReturnedVar,ArgVar),Arg",
+		"surfaceForms" : ["điểm", "độ cao"]
+	},
+	{
+		"name" : "placePlaceToPlace",
+		"argTypes" : ["Place"],
+		"returnedType" : "Place",
+		"execution" : "place(ReturnedVar), Arg",
+		"surfaceForms" : ["điểm"],
+		"argsNum" : 2
+	},
+	{
+		"name" : "placeStringToPlace",
+		"argTypes" : ["String"],
+		"returnedType" : "Place",
+		"execution" : "place(ReturnedVar)",
+		"surfaceForms" : ["điểm"],
+		"isBaseFunction" : true
+	},
+	{
+		"name" : "population",
+		"argTypes" : ["StateId", "City", "State", "CityId"],
+		"returnedType" : "Number",
+		"execution" : "population(ArgVar,ReturnedVar),Arg",
+		"surfaceForms" : ["dân số", "người"]
+	},
+	{
+		"name" : "river",
+		"argTypes" : ["State", "StateId", "CountryId"],
+		"returnedType" : "River",
+		"execution" : "river(ReturnedVar),traverse(ReturnedVar,ArgVar),Arg",
+		"surfaceForms" : ["sông"]
+	},
+	{
+		"name" : "riverId",
+		"argTypes" : ["String"],
+		"returnedType" : "RiverId",
+		"execution" : "const(ReturnedVar,riverid(ArgVar))",
+		"getFeatures" : "river(riverid(ArgVar))",
+		"isBaseFunction" : true
+	},
+	{
+		"name" : "riverOfRiverId",
+		"argTypes" : ["RiverId"],
+		"returnedType" : "River",
+		"execution" : "river(ArgVar),Arg",
+		"surfaceForms" : ["sông"]
+	},
+	{
+		"name" : "riverStringToList",
+		"argTypes" : ["String"],
+		"returnedType" : "River",
+		"execution" : "river(ReturnedVar)",
+		"surfaceForms" : ["sông"],
+		"isBaseFunction" : true
+	},
+	{
+		"name" : "size",
+		"argTypes" : ["StateId"],
+		"returnedType" : "Number",
+		"execution" : "size(ArgVar,ReturnedVar),Arg",
+		"surfaceForms" : ["kích thước", "lớn"]
+	},
+	{
+		"name" : "shortest",
+		"argTypes" : ["River"],
+		"returnedType" : "River",
+		"execution" : "shortest(ArgVar,(Arg))",
+		"surfaceForms" : ["ngắn nhất"]
+	},
+	{
+		"name" : "smallest",
+		"argTypes" : ["State", "City"],
+		"returnedType" : "State",
+		"execution" : "smallest(ArgVar,(Arg))",
+		"surfaceForms" : ["nhỏ nhất"]
+	},
+	{
+		"name" : "state",
+		"argTypes" : ["StateId", "State"],
+		"returnedType" : "State",
+		"execution" : "state(ArgVar),Arg",
+		"surfaceForms" : ["tiểu bang"]
+	},
+	{
+		"name" : "stateid",
+		"argTypes" : ["String"],
+		"returnedType" : "StateId",
+		"execution" : "const(ReturnedVar ,stateid(ArgVar))",
+		"getFeatures" : "state(stateid(ArgVar))",
+		"isBaseFunction" : true
+	},
+	{
+		"name" : "stateStateInterfaceToState",
+		"argTypes" : ["City", "CityId", "Place", "PlaceId", "River", "Mountain"],
+		"returnedType" : "State",
+		"execution" : "state(ReturnedVar),loc(ArgVar,ReturnedVar), Arg",
+		"surfaceForms" : ["tiểu bang"]
+	},
+	{
+		"name" : "stateCountryToState",
+		"argTypes" : ["CountryId"],
+		"returnedType" : "State",
+		"execution" : "state(ReturnedVar),loc(ReturnedVar,ArgVar), Arg",
+		"surfaceForms" : ["tiểu bang"]
+	},
+	{
+		"name" : "stateStringToState",
+		"argTypes" : ["String"],
+		"returnedType" : "State",
+		"execution" : "state(ReturnedVar)",
+		"surfaceForms" : ["tiểu bang"],
+		"isBaseFunction" : true
+	},
+	{
+		"name" : "sum",
+		"argTypes" : ["Number"],
+		"returnedType" : "Number",
+		"execution" : "sum(ArgVar, (Arg), ReturnedVar)",
+		"surfaceForms" : ["tổng"]
+	},
+	{
+		"name" : "traverse",
+		"argTypes" : ["RiverId", "River"],
+		"returnedType" : "State",
+		"execution" : "Arg,traverse(ArgVar,ReturnedVar)",
+		"surfaceForms" : ["chạy", "giáp biên giới"] 
+	}
+]

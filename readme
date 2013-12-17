@@ -1,0 +1,5 @@
+1. install pulp:
+sudo easy_install -U pulp
+2. install scikit-learn:
+sudo aptitude install build-essential python-dev python-numpy python-setuptools python-scipy libatlas-dev libatlas3-base
+easy_install -U scikit-learn
