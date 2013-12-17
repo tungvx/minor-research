@@ -31,7 +31,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		// readData();
-		int numberth = 250;
+		int numberth = 1;
 		// List<OutputStructure> trainingData = readWorkingData(TRAINING_FILE)
 		// .subList(numberth - 1, numberth);
 		List<OutputStructure> trainingData = readWorkingData(TRAINING_FILE)

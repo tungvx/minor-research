@@ -44,11 +44,7 @@ public class QueryObject {
 		}
 	}
 
-<<<<<<< HEAD
 	private static ExecutorService executor = Executors.newFixedThreadPool(3);
-=======
-	private static ExecutorService executor = Executors.newFixedThreadPool(2);
->>>>>>> c1cd19f... fix bugs
 
 	public static Term execute(final String queryString) {
 
@@ -56,20 +52,10 @@ public class QueryObject {
 		try {
 			return future.get(DataConfig.TIMEOUT, TimeUnit.SECONDS);
 		} catch (InterruptedException e) {
-<<<<<<< HEAD
 			e.printStackTrace();
 		} catch (ExecutionException e) {
 			e.printStackTrace();
 		} catch (TimeoutException e) {
-=======
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ExecutionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (TimeoutException e) {
-			// TODO Auto-generated catch block
->>>>>>> c1cd19f... fix bugs
 			e.printStackTrace();
 		}
 		return null;
