@@ -9,7 +9,6 @@ import edu.illinois.cs.cogcomp.indsup.learning.WeightVector;
 import functions.Function;
 
 public class InferenceSolver extends AbstractLossSensitiveStructureFinder {
-
 	@Override
 	public Pair<IStructure, Double> getLossSensitiveBestStructure(
 			WeightVector w, IInstance input, IStructure output)

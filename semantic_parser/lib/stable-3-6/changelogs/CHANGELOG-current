@@ -1,0 +1,214 @@
+------------------------------------------------------------------------
+r9937 | mhall | 2013-07-31 10:28:24 +1200 (Wed, 31 Jul 2013) | 1 line
+Changed paths:
+   M /branches/stable-3-6/last-release.props
+   M /branches/stable-3-6/weka/src/main/java/weka/core/version.txt
+
+Version is now 3.6.11-snapshot; updated date in last-release.props
+------------------------------------------------------------------------
+r9967 | mhall | 2013-08-02 09:15:46 +1200 (Fri, 02 Aug 2013) | 1 line
+Changed paths:
+   M /branches/stable-3-6/weka/src/main/java/weka/gui/beans/Filter.java
+
+The variable holding the reference to the Thread used to perform filtering was not transient - fixed.
+------------------------------------------------------------------------
+r9986 | mhall | 2013-08-08 20:13:39 +1200 (Thu, 08 Aug 2013) | 1 line
+Changed paths:
+   M /branches/stable-3-6/weka/src/main/java/weka/clusterers/XMeans.java
+
+The -O option now actually works - this was not implemented before :-) Furthermore, the Reader/Writer for IO of cluster center files are now closed properly after use and marked as transient (thus fixing not serializable exceptions).
+------------------------------------------------------------------------
+r9988 | mhall | 2013-08-09 22:13:38 +1200 (Fri, 09 Aug 2013) | 1 line
+Changed paths:
+   M /branches/stable-3-6/weka/src/main/java/weka/clusterers/EM.java
+
+Now uses the model from the previous iteration if there is a slight decrease in log likelihood when iterating.
+------------------------------------------------------------------------
+r9993 | mhall | 2013-08-16 15:42:03 +1200 (Fri, 16 Aug 2013) | 1 line
+Changed paths:
+   M /branches/stable-3-6/weka/src/main/java/weka/classifiers/functions/supportVector/PolyKernel.java
+
+Bernhard's fix for a memory leak that got applied to the trunk but not here - fixed.
+------------------------------------------------------------------------
+r10021 | mhall | 2013-09-18 08:55:02 +1200 (Wed, 18 Sep 2013) | 1 line
+Changed paths:
+   M /branches/stable-3-6/weka/src/main/java/weka/gui/explorer/messages/messages.properties
+
+Fixed a typo
+------------------------------------------------------------------------
+r10029 | mhall | 2013-09-23 20:00:49 +1200 (Mon, 23 Sep 2013) | 1 line
+Changed paths:
+   M /branches/stable-3-6/weka/src/main/java/weka/filters/unsupervised/attribute/RandomProjection.java
+
+Fixed a bug where the class attribute was not being copied when creating the output structure.
+------------------------------------------------------------------------
+r10036 | mhall | 2013-09-25 23:09:05 +1200 (Wed, 25 Sep 2013) | 1 line
+Changed paths:
+   M /branches/stable-3-6/weka/src/main/java/weka/classifiers/mi/supportVector/MIPolyKernel.java
+
+Backported the clean() method from Weka 3.7.
+------------------------------------------------------------------------
+r10069 | mhall | 2013-10-14 09:46:50 +1300 (Mon, 14 Oct 2013) | 1 line
+Changed paths:
+   M /branches/stable-3-6/weka/src/main/java/weka/classifiers/lazy/IBk.java
+
+Updated the tip text for the cross-validate option.
+------------------------------------------------------------------------
+r10073 | mhall | 2013-10-14 14:16:48 +1300 (Mon, 14 Oct 2013) | 1 line
+Changed paths:
+   M /branches/stable-3-6/weka/src/main/java/weka/classifiers/functions/MultilayerPerceptron.java
+
+Bug fix from Eibe: MultilayerPerceptron no longer modifies the values of the test instances that are passed into distributionForInstance()...
+------------------------------------------------------------------------
+r10084 | mhall | 2013-10-18 19:54:08 +1300 (Fri, 18 Oct 2013) | 1 line
+Changed paths:
+   M /branches/stable-3-6/weka/src/main/java/weka/core/converters/CSVLoader.java
+
+Was treating white space only entries as nominal values rather than missing - fixed.
+------------------------------------------------------------------------
+r10089 | mhall | 2013-10-18 22:45:36 +1300 (Fri, 18 Oct 2013) | 1 line
+Changed paths:
+   M /branches/stable-3-6/weka/src/main/java/weka/core/converters/CSVLoader.java
+
+Javadoc fix.
+------------------------------------------------------------------------
+r10114 | mhall | 2013-10-25 18:38:35 +1300 (Fri, 25 Oct 2013) | 1 line
+Changed paths:
+   M /branches/stable-3-6/weka/src/main/java/weka/classifiers/bayes/net/search/global/GlobalScoreSearchAlgorithm.java
+
+Fixed a bug in the k-fold CV routine.
+------------------------------------------------------------------------
+r10127 | mhall | 2013-11-05 20:22:14 +1300 (Tue, 05 Nov 2013) | 1 line
+Changed paths:
+   M /branches/stable-3-6/weka/src/main/java/weka/datagenerators/DataGenerator.java
+
+Changed the default output to be System.out instead of a StringWriter. This allows large datasets to be produced incrementally via redirection (rather than having to use -o) in the console and SimpleCLI.
+------------------------------------------------------------------------
+r10131 | mhall | 2013-11-08 14:22:38 +1300 (Fri, 08 Nov 2013) | 1 line
+Changed paths:
+   M /branches/stable-3-6/weka/src/main/java/weka/clusterers/SimpleKMeans.java
+
+Fixed a bug where cluster nominal attribute value counts were not getting set properly when empty clusters were pruned. Only affected the case when empty clusters occurred and the user had opted to output standard deviations/frequency counts.
+------------------------------------------------------------------------
+r10206 | mhall | 2013-11-19 14:21:59 +1300 (Tue, 19 Nov 2013) | 1 line
+Changed paths:
+   M /branches/stable-3-6/weka/src/main/java/weka/experiment/DatabaseUtils.java
+
+Changed the default for autoCommit (if not explicitly defined in the DatabaseUtils.props file) from false to true.
+------------------------------------------------------------------------
+r10256 | mhall | 2013-11-28 11:58:38 +1300 (Thu, 28 Nov 2013) | 1 line
+Changed paths:
+   M /branches/stable-3-6/weka/src/main/java/weka/classifiers/trees/j48/ClassifierTree.java
+
+Now back-quotes characters in node labels for the graph output.
+------------------------------------------------------------------------
+r10258 | mhall | 2013-11-28 12:20:08 +1300 (Thu, 28 Nov 2013) | 1 line
+Changed paths:
+   M /branches/stable-3-6/weka/src/main/java/weka/classifiers/trees/ADTree.java
+
+Now back-quotes characters in node labels for the graph output.
+------------------------------------------------------------------------
+r10259 | mhall | 2013-11-28 13:05:33 +1300 (Thu, 28 Nov 2013) | 1 line
+Changed paths:
+   M /branches/stable-3-6/weka/src/main/java/weka/classifiers/trees/ft/FTtree.java
+
+Now back-quotes characters in node labels for the graph output.
+------------------------------------------------------------------------
+r10260 | mhall | 2013-11-28 13:07:10 +1300 (Thu, 28 Nov 2013) | 1 line
+Changed paths:
+   M /branches/stable-3-6/weka/src/main/java/weka/classifiers/trees/LADTree.java
+
+Now back-quotes characters in node labels for the graph output.
+------------------------------------------------------------------------
+r10263 | mhall | 2013-11-28 13:12:41 +1300 (Thu, 28 Nov 2013) | 1 line
+Changed paths:
+   M /branches/stable-3-6/weka/src/main/java/weka/classifiers/trees/lmt/LMTNode.java
+
+Now back-quotes characters in node labels for the graph output.
+------------------------------------------------------------------------
+r10265 | mhall | 2013-11-28 13:15:38 +1300 (Thu, 28 Nov 2013) | 1 line
+Changed paths:
+   M /branches/stable-3-6/weka/src/main/java/weka/classifiers/trees/m5/RuleNode.java
+
+Now back-quotes characters in node labels for the graph output.
+------------------------------------------------------------------------
+r10267 | mhall | 2013-11-28 13:20:24 +1300 (Thu, 28 Nov 2013) | 1 line
+Changed paths:
+   M /branches/stable-3-6/weka/src/main/java/weka/classifiers/trees/j48/NBTreeClassifierTree.java
+
+Now back-quotes characters in node labels for the graph output.
+------------------------------------------------------------------------
+r10269 | mhall | 2013-11-28 14:01:36 +1300 (Thu, 28 Nov 2013) | 1 line
+Changed paths:
+   M /branches/stable-3-6/weka/src/main/java/weka/classifiers/trees/RandomTree.java
+
+Now back-quotes characters in node labels for the graph output.
+------------------------------------------------------------------------
+r10275 | mhall | 2013-11-28 14:17:35 +1300 (Thu, 28 Nov 2013) | 1 line
+Changed paths:
+   M /branches/stable-3-6/weka/src/main/java/weka/classifiers/trees/REPTree.java
+
+Now back-quotes characters in node labels for the graph output.
+------------------------------------------------------------------------
+r10277 | mhall | 2013-11-28 14:20:02 +1300 (Thu, 28 Nov 2013) | 1 line
+Changed paths:
+   M /branches/stable-3-6/weka/src/main/java/weka/classifiers/trees/ft/FTtree.java
+
+Changed Utils.quote() to Utils.backQuoteChars() in graph routine.
+------------------------------------------------------------------------
+r10278 | mhall | 2013-11-28 14:20:55 +1300 (Thu, 28 Nov 2013) | 1 line
+Changed paths:
+   M /branches/stable-3-6/weka/src/main/java/weka/classifiers/trees/ADTree.java
+
+Changed Utils.quote() to Utils.backQuoteChars() in graph routine.
+------------------------------------------------------------------------
+r10279 | mhall | 2013-11-28 14:21:44 +1300 (Thu, 28 Nov 2013) | 1 line
+Changed paths:
+   M /branches/stable-3-6/weka/src/main/java/weka/classifiers/trees/LADTree.java
+
+Changed Utils.quote() to Utils.backQuoteChars() in graph routine.
+------------------------------------------------------------------------
+r10281 | mhall | 2013-11-28 14:23:42 +1300 (Thu, 28 Nov 2013) | 1 line
+Changed paths:
+   M /branches/stable-3-6/weka/src/main/java/weka/classifiers/trees/lmt/LMTNode.java
+
+Changed Utils.quote() to Utils.backQuoteChars() in graph routine.
+------------------------------------------------------------------------
+r10284 | mhall | 2013-11-28 14:26:33 +1300 (Thu, 28 Nov 2013) | 1 line
+Changed paths:
+   M /branches/stable-3-6/weka/src/main/java/weka/classifiers/trees/m5/RuleNode.java
+
+Changed Utils.quote() to Utils.backQuoteChars() in graph routine.
+------------------------------------------------------------------------
+r10286 | mhall | 2013-11-28 14:28:14 +1300 (Thu, 28 Nov 2013) | 1 line
+Changed paths:
+   M /branches/stable-3-6/weka/src/main/java/weka/classifiers/trees/j48/NBTreeClassifierTree.java
+
+Changed Utils.quote() to Utils.backQuoteChars() in graph routine.
+------------------------------------------------------------------------
+r10287 | mhall | 2013-11-28 14:28:51 +1300 (Thu, 28 Nov 2013) | 1 line
+Changed paths:
+   M /branches/stable-3-6/weka/src/main/java/weka/classifiers/trees/RandomTree.java
+
+Changed Utils.quote() to Utils.backQuoteChars() in graph routine.
+------------------------------------------------------------------------
+r10290 | mhall | 2013-11-28 14:36:32 +1300 (Thu, 28 Nov 2013) | 1 line
+Changed paths:
+   M /branches/stable-3-6/weka/src/main/java/weka/classifiers/trees/ADTree.java
+
+Changed Utils.quote() to Utils.backQuoteChars() in graph routine.
+------------------------------------------------------------------------
+r10372 | mhall | 2013-12-06 13:59:18 +1300 (Fri, 06 Dec 2013) | 1 line
+Changed paths:
+   M /branches/stable-3-6/weka/src/main/java/weka/core/converters/CSVLoader.java
+   M /branches/stable-3-6/weka/src/main/java/weka/gui/explorer/ClassifierPanel.java
+   M /branches/stable-3-6/weka/src/main/java/weka/gui/explorer/messages/messages.properties
+
+Now pops up an error dialog (rather than throwing an IllegalArgumentException) if the user does not enter a valid range string for additional attribute output when printing predictions. The process also continues after the user presses OK in the dialog.
+------------------------------------------------------------------------
+r10397 | mhall | 2013-12-17 13:28:56 +1300 (Tue, 17 Dec 2013) | 1 line
+Changed paths:
+   M /branches/stable-3-6/weka/src/main/java/weka/attributeSelection/BestFirst.java
+
+Fixed the incomplete tool-tip text for the search termination property.
+------------------------------------------------------------------------
