@@ -49,7 +49,7 @@ public class IlpSolver {
 		try {
 			result = solver.solve(problem);
 		} catch (GlpkException e) {
-
+			e.printStackTrace();
 		}
 	}
 }

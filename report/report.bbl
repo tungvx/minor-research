@@ -1,0 +1,18 @@
+\begin{thebibliography}{1}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[James et~al.(2010)James, Dan, Ming-Wei, and
+  Dan]{Clarke:2010:DSP:1870568.1870571}
+Clarke James, Goldwasser Dan, Chang Ming-Wei, and Roth Dan.
+\newblock Driving semantic parsing from the world's response.
+\newblock In \emph{Proceedings of the Fourteenth Conference on Computational
+  Natural Language Learning}, CoNLL '10, pages 18--27, Stroudsburg, PA, USA,
+  2010. Association for Computational Linguistics.
+\newblock ISBN 978-1-932432-83-1.
+\newblock URL \url{http://dl.acm.org/citation.cfm?id=1870568.1870571}.
+
+\end{thebibliography}

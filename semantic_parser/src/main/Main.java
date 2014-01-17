@@ -31,7 +31,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		// readData();
-		int numberth = 2;
+		int numberth = 250;
 		// List<OutputStructure> trainingData = readWorkingData(TRAINING_FILE)
 		// .subList(numberth - 1, numberth);
 		List<OutputStructure> trainingData = readWorkingData(TRAINING_FILE)
@@ -40,44 +40,79 @@ public class Main {
 		// executeParsing(trainingData, w);
 
 		// Direct learning
-		// newCof = directLearning(trainingData);
+		w = directLearning(trainingData, w);
 		// executeParsing(trainingData, newCof);
 
 		// Aggressive learning.
-		w = agressiveLearning(trainingData, w);
+		// w = agressiveLearning(trainingData, w);
 		System.out.println("After training: " + w[0] + ", " + w[1] + ", "
 				+ w[2]);
 		// executeParsing(trainingData, w);
-		// List<OutputStructure> testingData = readWorkingData(TESTING_FILE);
+		List<OutputStructure> testingData = readWorkingData(TESTING_FILE);
 		// List<OutputStructure> testingData = readWorkingData(TESTING_FILE)
 		// .subList(numberth - 1, numberth);
-		// executeParsing(testingData, w);
+		executeParsing(testingData, w);
 
 	}
 
-	private static double[] directLearning(List<OutputStructure> trainingData) {
+	private static double[] directLearning(List<OutputStructure> trainingData,
+			double[] w) {
 		DirectLearner directLearner = new DirectLearner();
+		List<FeatureVector>[] trainingFeatureVectors = (List<FeatureVector>[]) new List<?>[trainingData
+				.size()];
+		for (int i = 0; i < trainingData.size(); i++)
+			trainingFeatureVectors[i] = new ArrayList<FeatureVector>();
 
 		List<Object[]> directTrainingData = new ArrayList<Object[]>();
-		for (OutputStructure outputStructure : trainingData) {
-			FeatureVector featureVector = outputStructure.getFeatureVector();
-			featureVector.normalize(outputStructure.getSentence()
-					.getNumberOfConstituents());
-			if (outputStructure.isResultCorrect()) {
-				directTrainingData.add(new Object[] { featureVector.getValue(),
-						"positive" });
-			} else {
-				directTrainingData.add(new Object[] { featureVector.getValue(),
-						"negative" });
+		boolean isNew = true;
+		while (isNew) {
+			isNew = false;
+			executeParsingForDirectLearning(trainingData, w);
+
+			for (OutputStructure outputStructure : trainingData) {
+				FeatureVector featureVector = outputStructure
+						.getFeatureVector();
+				featureVector.normalize(outputStructure.getSentence()
+						.getNumberOfConstituents());
+				if (!checkIfExist(
+						trainingFeatureVectors[trainingData
+								.indexOf(outputStructure)],
+						featureVector)) {
+					isNew = true;
+					trainingFeatureVectors[trainingData
+							.indexOf(outputStructure)].add(featureVector);
+					if (outputStructure.isResultCorrect()) {
+						directTrainingData.add(new Object[] {
+								featureVector.getValue(), "positive" });
+					} else {
+						directTrainingData.add(new Object[] {
+								featureVector.getValue(), "negative" });
+					}
+				}
+			}
+			try {
+				w = directLearner.learn(directTrainingData, 3);
+			} catch (Exception e) {
+
+				e.printStackTrace();
 			}
 		}
-		try {
-			// return directLearner.learn(directTrainingData, 3);
-		} catch (Exception e) {
+		return w;
+	}
 
-			e.printStackTrace();
+	private static boolean checkIfExist(List<FeatureVector> list,
+			FeatureVector featureVector) {
+		for (FeatureVector featureVector2 : list) {
+			boolean contained = true;
+			for (int i = 0; i < SemanticParser.NUMBER_OF_FEATURES; i++) {
+				if (featureVector.getValue()[i] != featureVector2.getValue()[i]) {
+					contained = false;
+				}
+			}
+			if (contained)
+				return contained;
 		}
-		return null;
+		return false;
 	}
 
 	private static double[] agressiveLearning(
@@ -127,6 +162,24 @@ public class Main {
 			System.out.println(tempOutputStructure.getOutput());
 		}
 		return result;
+	}
+
+	private static void executeParsingForDirectLearning(
+			List<OutputStructure> trainingData, double[] w) {
+		for (OutputStructure outputStructure : trainingData) {
+			System.out.print(trainingData.indexOf(outputStructure) + ": "
+					+ outputStructure.getResults() + " - ");
+			// OutputStructure outputStructure = trainingData.get(0);
+			SemanticParser parser = new SemanticParser(Function.getFunctions(),
+					outputStructure.getSentence(), w);
+
+			parser.addObjectivesAndContraints();
+			// System.out.println("Start solving");
+			OutputStructure tempOutputStructure = parser.parse();
+			tempOutputStructure.copyResults(outputStructure);
+
+			System.out.println(tempOutputStructure.getOutput());
+		}
 	}
 
 	private static void executeParsing(List<OutputStructure> trainingData,
