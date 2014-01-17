@@ -37,21 +37,21 @@ public class Main {
 		List<OutputStructure> trainingData = readWorkingData(TRAINING_FILE)
 				.subList(0, numberth);
 		double[] w = { 1, 1, 1 };
-		// executeParsing(trainingData, w);
+		executeParsing(trainingData, w);
 
 		// Direct learning
-		w = directLearning(trainingData, w);
+		// w = directLearning(trainingData, w);
 		// executeParsing(trainingData, newCof);
 
 		// Aggressive learning.
 		// w = agressiveLearning(trainingData, w);
-		System.out.println("After training: " + w[0] + ", " + w[1] + ", "
-				+ w[2]);
+		// System.out.println("After training: " + w[0] + ", " + w[1] + ", "
+		// + w[2]);
 		// executeParsing(trainingData, w);
-		List<OutputStructure> testingData = readWorkingData(TESTING_FILE);
+		// List<OutputStructure> testingData = readWorkingData(TESTING_FILE);
 		// List<OutputStructure> testingData = readWorkingData(TESTING_FILE)
 		// .subList(numberth - 1, numberth);
-		executeParsing(testingData, w);
+		// executeParsing(testingData, w);
 
 	}
 
@@ -202,6 +202,8 @@ public class Main {
 
 				if (outputStructure.isResultCorrect())
 					correct++;
+				// else
+				// return;
 				System.out.println(outputStructure.getOutput());
 			} catch (OutOfMemoryError e) {
 				e.printStackTrace();

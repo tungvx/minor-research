@@ -309,16 +309,17 @@ public class SemanticParser {
 					tempQuery = tempQuery.replace(DataConfig.RETURNED_VAR, ""
 							+ var++);
 				}
-				if (firstFinalComposition.indexOf(temp) == firstFinalComposition
-						.size() - 1) {
-					queryString = queryString.replace(DataConfig.ARG, tempQuery
-							.replace(DataConfig.ARG_VAR, Utils
-									.addSurroundingForQueryName(sentence
-											.getConstituent(temp[0]))));
-				} else {
-					queryString = queryString.replace(DataConfig.ARG,
-							tempQuery.replace(DataConfig.ARG_VAR, "" + var));
+
+				if (tempQuery.contains(DataConfig.LOCAL_VAR)) {
+					tempQuery = tempQuery.replace(DataConfig.LOCAL_VAR, ""
+							+ var++);
 				}
+
+				tempQuery = tempQuery.replace(DataConfig.CURRENT_CONSTITUENT,
+						Utils.addSurroundingForQueryName(sentence
+								.getConstituent(temp[0])));
+				queryString = queryString.replace(DataConfig.ARG,
+						tempQuery.replace(DataConfig.ARG_VAR, "" + var));
 				var = (char) (var - functions.get(temp[1]).getNumberOfArgs() + 1);
 			}
 

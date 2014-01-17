@@ -25,24 +25,7 @@
 		"argTypes" : ["String"],
 		"returnedType" : "City",
 		"execution" : "capital(ReturnedVar)",
-		"surfaceForms" : ["thủ phủ"],
-		"isBaseFunction" : true
-	},
-	{
-		"name" : "cityid",
-		"argTypes" : ["String"],
-		"returnedType" : "CityId",
-		"execution" : "const(ReturnedVar,cityid(ArgVar,_))",
-		"surfaceForms" : ["thành phố"],
-		"getFeatures" : "city(cityid(ArgVar,_))",
-		"isBaseFunction" : true
-	},
-	{
-		"name" : "cityInterfaceToCity",
-		"argTypes" : ["CityId"],
-		"returnedType" : "City",
-		"execution" : "city(ArgVar),Arg",
-		"surfaceForms" : ["thành phố"]
+		"surfaceForms" : ["thủ phủ"]
 	},
 	{
 		"name" : "cityCityInterfaceToCity",
@@ -52,12 +35,33 @@
 		"surfaceForms" : ["thành phố"]
 	},
 	{
+		"name" : "cityid",
+		"argTypes" : ["String"],
+		"returnedType" : "CityId",
+		"execution" : "const(ReturnedVar,cityid(CurConstituent,_))",
+		"surfaceForms" : ["thành phố"],
+		"getFeatures" : "city(cityid(CurConstituent,_))"
+	},
+	{
+		"name" : "cityIdToCity",
+		"argTypes" : ["CityId"],
+		"returnedType" : "City",
+		"execution" : "city(ArgVar),Arg",
+		"surfaceForms" : ["thành phố"]
+	},
+	{
+		"name" : "cityStateToCityWithCityName",
+		"argTypes" : ["StateId"],
+		"returnedType" : "City",
+		"execution" : "const(ReturnedVar,cityid(CurConstituent,LocalVar)), abbreviation(ArgVar, LocalVar),Arg",
+		"getFeatures" : "city(cityid(CurConstituent,_))"
+	},
+	{
 		"name" : "cityStringToCity",
 		"argTypes" : ["String"],
 		"returnedType" : "City",
 		"execution" : "city(ReturnedVar)",
-		"surfaceForms" : ["thành phố"],
-		"isBaseFunction" : true
+		"surfaceForms" : ["thành phố"]
 	},
 	{
 		"name" : "count",
@@ -71,8 +75,7 @@
 		"argTypes" : ["String"],
 		"returnedType" : "CountryId",
 		"execution" : "const(ReturnedVar,countryid(usa))",
-		"surfaceForms" : ["usa", "Hoa Kỳ","us", "Mỹ"],
-		"isBaseFunction" : true
+		"surfaceForms" : ["usa", "Hoa Kỳ","us", "Mỹ"]
 	},
 	{
 		"name" : "density",
@@ -202,8 +205,7 @@
 		"argTypes" : ["String"],
 		"returnedType" : "Mountain",
 		"execution" : "mountain(ReturnedVar)",
-		"surfaceForms" : ["ngọn núi", "đỉnh"],
-		"isBaseFunction" : true
+		"surfaceForms" : ["ngọn núi", "đỉnh"]
 	},
 	{
 		"name" : "next_to",
@@ -216,9 +218,8 @@
 		"name" : "placeid",
 		"argTypes" : ["String"],
 		"returnedType" : "PlaceId",
-		"execution" : "const(ReturnedVar ,placeid(ArgVar))",
-		"getFeatures" : "place(placeid(ArgVar))",
-		"isBaseFunction" : true
+		"execution" : "const(ReturnedVar ,placeid(CurConstituent))",
+		"getFeatures" : "place(placeid(CurConstituent))"
 	},
 	{
 		"name" : "place",
@@ -240,8 +241,7 @@
 		"argTypes" : ["String"],
 		"returnedType" : "Place",
 		"execution" : "place(ReturnedVar)",
-		"surfaceForms" : ["điểm"],
-		"isBaseFunction" : true
+		"surfaceForms" : ["điểm"]
 	},
 	{
 		"name" : "population",
@@ -261,9 +261,8 @@
 		"name" : "riverId",
 		"argTypes" : ["String"],
 		"returnedType" : "RiverId",
-		"execution" : "const(ReturnedVar,riverid(ArgVar))",
-		"getFeatures" : "river(riverid(ArgVar))",
-		"isBaseFunction" : true
+		"execution" : "const(ReturnedVar,riverid(CurConstituent))",
+		"getFeatures" : "river(riverid(CurConstituent))"
 	},
 	{
 		"name" : "riverOfRiverId",
@@ -277,8 +276,7 @@
 		"argTypes" : ["String"],
 		"returnedType" : "River",
 		"execution" : "river(ReturnedVar)",
-		"surfaceForms" : ["sông"],
-		"isBaseFunction" : true
+		"surfaceForms" : ["sông"]
 	},
 	{
 		"name" : "size",
@@ -312,9 +310,8 @@
 		"name" : "stateid",
 		"argTypes" : ["String"],
 		"returnedType" : "StateId",
-		"execution" : "const(ReturnedVar ,stateid(ArgVar))",
-		"getFeatures" : "state(stateid(ArgVar))",
-		"isBaseFunction" : true
+		"execution" : "const(ReturnedVar ,stateid(CurConstituent))",
+		"getFeatures" : "state(stateid(CurConstituent))"
 	},
 	{
 		"name" : "stateStateInterfaceToState",
@@ -335,8 +332,7 @@
 		"argTypes" : ["String"],
 		"returnedType" : "State",
 		"execution" : "state(ReturnedVar)",
-		"surfaceForms" : ["tiểu bang"],
-		"isBaseFunction" : true
+		"surfaceForms" : ["tiểu bang"]
 	},
 	{
 		"name" : "sum",

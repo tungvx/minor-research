@@ -100,7 +100,7 @@ public class Function {
 		double[] features = new double[3];
 		if (getFeatures != null
 				&& QueryObject.checkExist(getFeatures.replace(
-						DataConfig.ARG_VAR, Utils
+						DataConfig.CURRENT_CONSTITUENT, Utils
 								.addSurroundingForQueryName(Utils
 										.normalizeName(constituent))))) {
 			for (int i = 0; i < SemanticParser.NUMBER_OF_FEATURES; i++)
@@ -221,108 +221,6 @@ public class Function {
 			e.printStackTrace();
 		}
 
-		// functions.add(new AbbreviationFunction());
-		// functions.add(new AreaFuncAreaInterToDouble());
-		// functions.add(new AreaFuncStateListToStateList());
-		// functions.add(new AreaFuncStateListToDoubleList());
-		//
-		// functions.add(new CapitalFuncStateToCity());
-		// functions.add(new CapitalFuncStringToCity());
-		// functions.add(new CapitalFuncStateListToCityList());
-		// functions.add(new CapitalFuncCityListToCityList());
-		// functions.add(new CapitalFuncCityToCity());
-		// functions.add(new CapitalFuncStringToList());
-		//
-		// functions.add(new CityFuncCityInterfaceToList());
-		// functions.add(new CityFuncStateListToStateList());
-		// functions.add(new CityFuncStringToCity());
-		// functions.add(new CityFuncCityToCity());
-		// functions.add(new CityFuncStringToList());
-		// functions.add(new CityFuncStringNameToList());
-		// functions.add(new CityFuncCityInterListToCityList());
-		//
-		// functions.add(new CountFunction());
-		//
-		// functions.add(new CountryFunction());
-		//
-		// functions.add(new DensityFuncDensiInterToDouble());
-		// functions.add(new DensityFuncStateListToStateList());
-		// functions.add(new DensityFuncDensiInterListToNumberList());
-		//
-		// // // functions.add(new ElevationFunction());
-		// // // functions.add(new HighPointFunction());
-		//
-		// functions.add(new LakeFuncLakesInterListToLakeList());
-		// functions.add(new LakeFuncLakesInterfaceToLakeList());
-		//
-		// functions.add(new LargestState());
-		// functions.add(new HighestPlace());
-		// functions.add(new LargestCity());
-		// functions.add(new LargestRiver());
-		// functions.add(new HighestMountain());
-		//
-		// functions.add(new LeastState());
-		// functions.add(new LeastPlace());
-		// functions.add(new LeastRiver());
-		// functions.add(new LeastCity());
-		//
-		// functions.add(new LengthFuncRiverToNumber());
-		// functions.add(new LengthFuncRiverListToNumberList());
-		//
-		// functions.add(new NegativeFuncStateListToStateList());
-		//
-		// functions.add(new HeightFuncStateListToStateList());
-		// functions.add(new HeightFuncHeightInterfaceToNumber());
-		//
-		// functions.add(new HigherFunction());
-		//
-		// // // // functions.add(new LongestFunction());
-		// // // // functions.add(new LowPointFunction());
-		//
-		// functions.add(new MajorFuncCityListToCityList());
-		// functions.add(new MajorFuncRiverListToRiverList());
-		// functions.add(new MajorRiverStateListToStateList());
-		// functions.add(new MajorFuncLakeListToLakeList());
-		//
-		// // // // functions.add(new MountainFunction());
-		// functions.add(new MountainFuncMountainInterToList());
-		//
-		// functions.add(new NextToFuncStateToStateList());
-		// functions.add(new NextToFuncStateListToStateList());
-		// functions.add(new NextToFuncRiverToStateList());
-		// functions.add(new NextToFuncFilterStateListToStateList());
-		//
-		// functions.add(new PlaceFuncStringToPlace());
-		// functions.add(new PlaceFuncPlaceInterfaceToPlaceList());
-		// functions.add(new PlaceFuncPlaceListToPlaceList());
-		// functions.add(new PlaceFuncStringToPlaceList());
-		//
-		// functions.add(new PopulationFuncPopInterfaceToDouble());
-		// functions.add(new PopulationFuncPopInterListToNumberList());
-		// functions.add(new PopulationFuncStateListToStateList());
-		// functions.add(new PopulationFuncStateToState());
-		// functions.add(new PopulationFuncCityListToCityList());
-		//
-		// functions.add(new RiverFuncRiverInterfaceToRiverList());
-		// functions.add(new RiverFuncStringToList());
-		// functions.add(new RiverFuncStringToRiver());
-		// functions.add(new RiverFuncStateListToRiverList());
-		// functions.add(new RiverFuncRiverToRiver());
-		// functions.add(new RiverFuncStateListToRiverList());
-		//
-		// functions.add(new StateFuncStringToState());
-		// functions.add(new StateFuncStringToList());
-		// functions.add(new StateFuncStateListToStateList());
-		// functions.add(new StateFuncStateInterfaceToState());
-		// functions.add(new StateFuncStatesInterToList());
-		// functions.add(new StateFuncStateInterListToStateList());
-		// functions.add(new StateFuncCityListToCity());
-		// functions.add(new StateFuncRiverListToRiverList());
-		// functions.add(new StateFuncRiverToRiver());
-		// functions.add(new StateFuncCityToCity());
-		//
-		// functions.add(new SumFunction());
-
 		numberOfFunctions = functions.size();
 		return functions;
 	}
@@ -331,7 +229,6 @@ public class Function {
 		String name = null, returnedType = null, execution = null, getFeatures = null;
 		List<String> argTypes = new ArrayList<String>();
 		List<String> surfaceForms = new ArrayList<String>();
-		boolean isBaseFunction = false;
 		int numberOfArgs = 1;
 		try {
 			jsonReader.beginObject();
@@ -357,8 +254,6 @@ public class Function {
 						surfaceForms.add(jsonReader.nextString());
 					}
 					jsonReader.endArray();
-				} else if (nextName.equals("isBaseFunction")) {
-					isBaseFunction = jsonReader.nextBoolean();
 				} else if (nextName.equals("argsNum")) {
 					numberOfArgs = jsonReader.nextInt();
 				} else {
@@ -370,7 +265,8 @@ public class Function {
 			e.printStackTrace();
 		}
 		return new Function(name, argTypes, returnedType, execution,
-				getFeatures, surfaceForms, isBaseFunction, numberOfArgs);
+				getFeatures, surfaceForms, argTypes.size() == 1
+						&& argTypes.get(0).equals("String"), numberOfArgs);
 	}
 
 	public String getName() {
