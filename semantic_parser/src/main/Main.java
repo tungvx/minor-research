@@ -32,10 +32,15 @@ public class Main {
 	public static void main(String[] args) {
 		// readData();
 		int numberth = 250;
+		int result = 0;
+		for (Function function : Function.getFunctions()) {
+			result += function.getSurfaceForms().size();
+		}
+		System.out.println(result / (double) Function.getNumberOfFunctions());
 		// List<OutputStructure> trainingData = readWorkingData(TRAINING_FILE)
 		// .subList(numberth - 1, numberth);
-		List<OutputStructure> trainingData = readWorkingData(TRAINING_FILE)
-				.subList(0, numberth);
+		// List<OutputStructure> trainingData = readWorkingData(TRAINING_FILE)
+		// .subList(0, numberth);
 		double[] w = { 1, 1, 1 };
 		// executeParsing(trainingData, w);
 		// Function.setNotTrainging();
@@ -45,7 +50,7 @@ public class Main {
 		// executeParsing(trainingData, newCof);
 
 		// Aggressive learning.
-		w = agressiveLearning(trainingData, w);
+		// w = agressiveLearning(trainingData, w);
 		// System.out.println("After training: " + w[0] + ", " + w[1] + ", "
 		// + w[2]);
 		// executeParsing(trainingData, w);
