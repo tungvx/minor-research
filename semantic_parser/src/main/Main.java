@@ -37,14 +37,15 @@ public class Main {
 		List<OutputStructure> trainingData = readWorkingData(TRAINING_FILE)
 				.subList(0, numberth);
 		double[] w = { 1, 1, 1 };
-		executeParsing(trainingData, w);
+		// executeParsing(trainingData, w);
+		// Function.setNotTrainging();
 
 		// Direct learning
 		// w = directLearning(trainingData, w);
 		// executeParsing(trainingData, newCof);
 
 		// Aggressive learning.
-		// w = agressiveLearning(trainingData, w);
+		w = agressiveLearning(trainingData, w);
 		// System.out.println("After training: " + w[0] + ", " + w[1] + ", "
 		// + w[2]);
 		// executeParsing(trainingData, w);
@@ -93,9 +94,10 @@ public class Main {
 			try {
 				w = directLearner.learn(directTrainingData, 3);
 			} catch (Exception e) {
-
+				System.err.println(e.getMessage());
 				e.printStackTrace();
 			}
+			Function.setNotTrainging();
 		}
 		return w;
 	}
@@ -132,6 +134,7 @@ public class Main {
 					outputs.add((IStructure) outputStructure);
 				}
 			}
+			Function.setNotTrainging();
 			AggressiveLearner aggressiveLearner = new AggressiveLearner(
 					sentences, outputs);
 			w = aggressiveLearner.train().getWeightArray();

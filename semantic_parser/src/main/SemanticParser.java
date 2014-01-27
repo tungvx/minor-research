@@ -26,6 +26,7 @@ public class SemanticParser {
 	// the objective expression:
 	private Linear objective;
 	private double[] coefficients;
+	private boolean isNzColumns = false;
 
 	public static final int NUMBER_OF_FEATURES = 3;
 
@@ -83,6 +84,7 @@ public class SemanticParser {
 			for (int j = 0; j < MAX_FUNCTIONS_EACH_WORDS; j++) {
 				Pair pair = pairs.get(j);
 				if (pair.getY() > 0) {
+					isNzColumns = true;
 					// System.out.println(sentence.getConstituent(i) + " - "
 					// + functions.get(pair.getX()) + " - " + pair.getY());
 					constraints.add(1, wordsFuntionsMapping[i][pair.getX()]);
@@ -113,6 +115,7 @@ public class SemanticParser {
 											.get(j)
 											.getFeatures(
 													functions.get(l),
+													l,
 													sentence.getNumberOfConstituents()
 															- Math.abs(i - k),
 													sentence.getConstituent(i),
@@ -250,12 +253,13 @@ public class SemanticParser {
 
 	public OutputStructure parse() {
 		OutputStructure result = new OutputStructure(sentence);
-		ilpSolver.setObjective(objective, OptType.MAX);
+		if (isNzColumns) {
+			ilpSolver.setObjective(objective, OptType.MAX);
 
-		ilpSolver.solve();
+			ilpSolver.solve();
 
-		getFinalResult(result);
-
+			getFinalResult(result);
+		}
 		return result;
 	}
 
@@ -326,6 +330,13 @@ public class SemanticParser {
 			System.out.println(queryString);
 
 			outputStructure.setOutput(QueryObject.execute(queryString));
+			if (outputStructure.isResultCorrect()) {
+				for (int i = 0; i < firstFinalComposition.size() - 1; i++) {
+					functions.get(firstFinalComposition.get(i)[1])
+							.increaseFrequenciesAt(
+									firstFinalComposition.get(i + 1)[1]);
+				}
+			}
 		}
 	}
 

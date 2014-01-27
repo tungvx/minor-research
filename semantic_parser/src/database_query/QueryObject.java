@@ -44,7 +44,7 @@ public class QueryObject {
 		}
 	}
 
-	private static ExecutorService executor = Executors.newFixedThreadPool(3);
+	private static ExecutorService executor = Executors.newCachedThreadPool();
 
 	public static Term execute(final String queryString) {
 

@@ -38,8 +38,9 @@ public class AggressiveLearner {
 			return learner.trainStructuredSVM(inferenceSolver,
 					structuredProblem, params);
 		} catch (Exception e) {
+			System.err.println(e.getMessage());
 			e.printStackTrace();
 		}
-		return null;
+		return new WeightVector(new double[] { 1, 1, 1 }, 1);
 	}
 }

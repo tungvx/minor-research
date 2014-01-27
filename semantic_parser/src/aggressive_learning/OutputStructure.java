@@ -1,6 +1,10 @@
 package aggressive_learning;
 
+import java.util.Arrays;
+import java.util.HashSet;
+
 import jpl.Term;
+import jpl.Util;
 import edu.illinois.cs.cogcomp.indsup.inference.IStructure;
 import edu.illinois.cs.cogcomp.indsup.learning.FeatureVector;
 import functions.Function;
@@ -84,6 +88,7 @@ public class OutputStructure implements IStructure {
 															.getFeatures(
 																	Function.getFunctions()
 																			.get(l),
+																	l,
 																	sentence.getNumberOfConstituents()
 																			- Math.abs(i
 																					- k),
@@ -124,7 +129,15 @@ public class OutputStructure implements IStructure {
 	public boolean isResultCorrect() {
 		if (results == null)
 			return output == null;
-		return results.equals(output);
+		if (output == null)
+			return false;
+		String[] stringResults = Util.atomListToStringArray(results);
+		String[] stringOutput = Util.atomListToStringArray(output);
+		if (stringOutput == null || stringResults == null)
+			return results.equals(output);
+		HashSet<String> set1 = new HashSet<String>(Arrays.asList(stringResults));
+		HashSet<String> set2 = new HashSet<String>(Arrays.asList(stringOutput));
+		return set1.equals(set2);
 	}
 
 	public void copyResults(OutputStructure outputStructure) {

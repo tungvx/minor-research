@@ -15,8 +15,8 @@ import com.google.gson.stream.JsonReader;
 import database_query.QueryObject;
 
 public class Function {
-	protected List<String> surfaceForms;
-	protected List<String> surfaceFormsInEnglish;
+	private List<String> surfaceForms;
+	private List<String> surfaceFormsInEnglish;
 	private static int numberOfFunctions;
 	private static List<Function> functions;
 
@@ -27,6 +27,10 @@ public class Function {
 	private String getFeatures;
 	private boolean isBaseFunction;
 	private int numberOfArgs;
+
+	private double[] frequencies;
+
+	private static boolean isTrainging = true;
 
 	public static final double MAX_SIMILARITY = 20;
 
@@ -150,27 +154,26 @@ public class Function {
 		return trim.split("\\s+").length; // separate string around spaces
 	}
 
-	public double[] getFeatures(Function function, int distance, String word1,
-			String word2) {
+	public double[] getFeatures(Function function, int index, int distance,
+			String word1, String word2) {
+		if (frequencies == null) {
+			frequencies = new double[numberOfFunctions];
+		}
 		double[] result = new double[3];
 		if (argTypes.contains(function.getReturnedType())) {
-			// double[] feature1 = getFeatures(word1);
-			// double[] feature2 = function.getFeatures(word2);
-			// for (int i = 0; i < SemanticParser.NUMBER_OF_FEATURES; i++) {
-			// result[i] = Math.pow(feature1[i] + feature2[i], 2);
-			// }
-			for (int i = 0; i < SemanticParser.NUMBER_OF_FEATURES; i++) {
-				result[i] = MAX_SIMILARITY;
+			result[0] = MAX_SIMILARITY / (2 * distance);
+			result[1] = MAX_SIMILARITY / (2 * distance);
+			if (isTrainging)
+				result[2] = MAX_SIMILARITY / (2 * distance);
+			else {
+				result[2] = frequencies[index];
 			}
-			// result[1] = 3;
 		}
 
 		// System.out.println(word1 + " : " + getClass().getName() + " - " +
 		// word2
 		// + " : " + function.getClass().getName() + ": " + result[0]
 		// + "," + result[1] + "," + result[2]);
-
-		result[2] /= distance;
 		return result;
 	}
 
@@ -275,5 +278,16 @@ public class Function {
 
 	public int getNumberOfArgs() {
 		return numberOfArgs;
+	}
+
+	public void increaseFrequenciesAt(int index) {
+		if (isTrainging)
+			frequencies[index] = (frequencies[index] + 1) * MAX_SIMILARITY
+					/ (MAX_SIMILARITY + 1);
+	}
+
+	public static void setNotTrainging() {
+		if (isTrainging)
+			isTrainging = false;
 	}
 }
