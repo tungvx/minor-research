@@ -32,33 +32,29 @@ public class Main {
 	public static void main(String[] args) {
 		// readData();
 		int numberth = 250;
-		int result = 0;
-		for (Function function : Function.getFunctions()) {
-			result += function.getSurfaceForms().size();
-		}
-		System.out.println(result / (double) Function.getNumberOfFunctions());
 		// List<OutputStructure> trainingData = readWorkingData(TRAINING_FILE)
 		// .subList(numberth - 1, numberth);
-		// List<OutputStructure> trainingData = readWorkingData(TRAINING_FILE)
-		// .subList(0, numberth);
-		double[] w = { 1, 1, 1 };
-		// executeParsing(trainingData, w);
-		// Function.setNotTrainging();
+		List<OutputStructure> trainingData = readWorkingData(TRAINING_FILE)
+				.subList(0, numberth);
+		double[] w = { 1, 1 };
+		Function.setNotTrainging();
+		for (int i = 0; i < 10; i++) {
+			executeParsing(trainingData, w);
+		}
 
 		// Direct learning
 		// w = directLearning(trainingData, w);
-		// executeParsing(trainingData, newCof);
 
 		// Aggressive learning.
 		// w = agressiveLearning(trainingData, w);
-		// System.out.println("After training: " + w[0] + ", " + w[1] + ", "
-		// + w[2]);
+		// System.out.println("After training: " + w[0] + ", " + w[1]);
 		// executeParsing(trainingData, w);
-		// List<OutputStructure> testingData = readWorkingData(TESTING_FILE);
+		List<OutputStructure> testingData = readWorkingData(TESTING_FILE);
 		// List<OutputStructure> testingData = readWorkingData(TESTING_FILE)
 		// .subList(numberth - 1, numberth);
 		// executeParsing(testingData, w);
-
+		// Function.setNotTrainging();
+		executeParsing(testingData, w);
 	}
 
 	private static double[] directLearning(List<OutputStructure> trainingData,
@@ -78,8 +74,10 @@ public class Main {
 			for (OutputStructure outputStructure : trainingData) {
 				FeatureVector featureVector = outputStructure
 						.getFeatureVector();
-				featureVector.normalize(outputStructure.getSentence()
-						.getNumberOfConstituents());
+				// featureVector.normalize(outputStructure.getSentence()
+				// .getNumberOfConstituents());
+				Utils.normalizeFeatureVector(featureVector);
+
 				if (!checkIfExist(
 						trainingFeatureVectors[trainingData
 								.indexOf(outputStructure)],
@@ -97,7 +95,8 @@ public class Main {
 				}
 			}
 			try {
-				w = directLearner.learn(directTrainingData, 3);
+				w = directLearner.learn(directTrainingData,
+						SemanticParser.NUMBER_OF_FEATURES);
 			} catch (Exception e) {
 				System.err.println(e.getMessage());
 				e.printStackTrace();
@@ -155,7 +154,8 @@ public class Main {
 					+ outputStructure.getResults() + " - ");
 			// OutputStructure outputStructure = trainingData.get(0);
 			SemanticParser parser = new SemanticParser(Function.getFunctions(),
-					outputStructure.getSentence(), w);
+					outputStructure.getSentence(),
+					outputStructure.getResults(), w);
 
 			parser.addObjectivesAndContraints();
 			// System.out.println("Start solving");
@@ -179,7 +179,8 @@ public class Main {
 					+ outputStructure.getResults() + " - ");
 			// OutputStructure outputStructure = trainingData.get(0);
 			SemanticParser parser = new SemanticParser(Function.getFunctions(),
-					outputStructure.getSentence(), w);
+					outputStructure.getSentence(),
+					outputStructure.getResults(), w);
 
 			parser.addObjectivesAndContraints();
 			// System.out.println("Start solving");
@@ -201,15 +202,16 @@ public class Main {
 			try {
 				SemanticParser parser = new SemanticParser(
 						Function.getFunctions(), outputStructure.getSentence(),
-						w);
+						outputStructure.getResults(), w);
 
 				parser.addObjectivesAndContraints();
 				// System.out.println("Start solving");
 				OutputStructure tempOutputStructure = parser.parse();
 				tempOutputStructure.copyResults(outputStructure);
 
-				if (outputStructure.isResultCorrect())
+				if (outputStructure.isResultCorrect()) {
 					correct++;
+				}
 				// else
 				// return;
 				System.out.println(outputStructure.getOutput());

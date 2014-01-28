@@ -31,7 +31,7 @@ public class DirectLearner {
 		((SGD) cModel).setOptions(option);
 
 		// Final class
-		FastVector fvClassVal = new FastVector(2);
+		FastVector fvClassVal = new FastVector(numberOfFeatures);
 		fvClassVal.addElement("positive");
 		fvClassVal.addElement("negative");
 		Attribute ClassAttribute = new Attribute("theClass", fvClassVal);
@@ -52,7 +52,8 @@ public class DirectLearner {
 
 		// Create the instance
 		for (int i = 0; i < trainingData.size(); i++) {
-			Instance iExample = new DenseInstance(4);
+			Instance iExample = new DenseInstance(
+					numberOfFeatures + 1);
 			Object[] iObject = trainingData.get(i);
 			double[] iInt = (double[]) iObject[0];
 			for (int j = 0; j < numberOfFeatures; j++) {

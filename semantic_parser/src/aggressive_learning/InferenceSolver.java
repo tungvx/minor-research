@@ -18,9 +18,10 @@ public class InferenceSolver extends AbstractLossSensitiveStructureFinder {
 		OutputStructure outputStructure = (OutputStructure) output;
 
 		SemanticParser parser = new SemanticParser(Function.getFunctions(),
-				sentence, w.getWeightArray());
-		System.out.println(w.getWeightArray()[0] + ", " + w.getWeightArray()[1]
-				+ ", " + w.getWeightArray()[2]);
+				sentence, outputStructure.getResults(), w.getWeightArray());
+		// System.out.println(w.getWeightArray()[0] + ", " +
+		// w.getWeightArray()[1]
+		// + ", " + w.getWeightArray()[2]);
 		parser.addObjectivesAndContraints();
 		parser.addDistanceToObjective(outputStructure);
 
@@ -53,7 +54,7 @@ public class InferenceSolver extends AbstractLossSensitiveStructureFinder {
 		Sentence sentence = (Sentence) input;
 
 		SemanticParser parser = new SemanticParser(Function.getFunctions(),
-				sentence, w.getWeightArray());
+				sentence, null, w.getWeightArray());
 
 		parser.addObjectivesAndContraints();
 

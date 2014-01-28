@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
+import jpl.Term;
 import net.sf.javailp.Linear;
 import net.sf.javailp.Operator;
 import net.sf.javailp.OptType;
@@ -19,6 +20,7 @@ public class SemanticParser {
 	private List<Function> functions;
 	private IlpSolver ilpSolver;
 	private Sentence sentence;
+	private Term results;
 	private String[][] wordsFuntionsMapping;
 	private boolean[][] wordsFuntionsMappingCheck;
 	private String[][][][] functionsCompositions;
@@ -28,15 +30,16 @@ public class SemanticParser {
 	private double[] coefficients;
 	private boolean isNzColumns = false;
 
-	public static final int NUMBER_OF_FEATURES = 3;
+	public static final int NUMBER_OF_FEATURES = 2;
 
 	private static final int MAX_FUNCTIONS_EACH_WORDS = 13;
 
 	public SemanticParser(List<Function> functions, Sentence sentence,
-			double[] coefficients) {
+			Term results, double[] coefficients) {
 		this.functions = functions;
 		this.ilpSolver = new IlpSolver();
 		this.sentence = sentence;
+		this.results = results;
 		this.coefficients = coefficients;
 		objective = new Linear();
 
@@ -253,6 +256,7 @@ public class SemanticParser {
 
 	public OutputStructure parse() {
 		OutputStructure result = new OutputStructure(sentence);
+		result.setResults(results);
 		if (isNzColumns) {
 			ilpSolver.setObjective(objective, OptType.MAX);
 
@@ -330,10 +334,17 @@ public class SemanticParser {
 			System.out.println(queryString);
 
 			outputStructure.setOutput(QueryObject.execute(queryString));
+
 			if (outputStructure.isResultCorrect()) {
 				for (int i = 0; i < firstFinalComposition.size() - 1; i++) {
 					functions.get(firstFinalComposition.get(i)[1])
 							.increaseFrequenciesAt(
+									firstFinalComposition.get(i + 1)[1]);
+				}
+			} else {
+				for (int i = 0; i < firstFinalComposition.size() - 1; i++) {
+					functions.get(firstFinalComposition.get(i)[1])
+							.decreaseFrequenciesAt(
 									firstFinalComposition.get(i + 1)[1]);
 				}
 			}

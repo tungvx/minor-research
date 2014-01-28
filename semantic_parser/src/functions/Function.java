@@ -101,7 +101,7 @@ public class Function {
 	}
 
 	public double[] getFeatures(String constituent) {
-		double[] features = new double[3];
+		double[] features = new double[SemanticParser.NUMBER_OF_FEATURES];
 		if (getFeatures != null
 				&& QueryObject.checkExist(getFeatures.replace(
 						DataConfig.CURRENT_CONSTITUENT, Utils
@@ -159,15 +159,15 @@ public class Function {
 		if (frequencies == null) {
 			frequencies = new double[numberOfFunctions];
 		}
-		double[] result = new double[3];
+		double[] result = new double[SemanticParser.NUMBER_OF_FEATURES];
 		if (argTypes.contains(function.getReturnedType())) {
 			result[0] = MAX_SIMILARITY / (2 * distance);
-			result[1] = MAX_SIMILARITY / (2 * distance);
 			if (isTrainging)
-				result[2] = MAX_SIMILARITY / (2 * distance);
+				result[1] = MAX_SIMILARITY / (2 * distance);
 			else {
-				result[2] = frequencies[index];
+				result[1] = frequencies[index];
 			}
+			// result[2] = MAX_SIMILARITY;
 		}
 
 		// System.out.println(word1 + " : " + getClass().getName() + " - " +
@@ -281,13 +281,31 @@ public class Function {
 	}
 
 	public void increaseFrequenciesAt(int index) {
-		if (isTrainging)
-			frequencies[index] = (frequencies[index] + 1) * MAX_SIMILARITY
-					/ (MAX_SIMILARITY + 1);
+		// if (isTrainging)
+		frequencies[index] = (frequencies[index] + 1) * MAX_SIMILARITY
+				/ (MAX_SIMILARITY + 1);
 	}
 
 	public static void setNotTrainging() {
 		if (isTrainging)
 			isTrainging = false;
+	}
+
+	public void printFrequencies() {
+		if (frequencies != null) {
+			for (int i = 0; i < frequencies.length; i++)
+				System.out.print(frequencies[i] + " ");
+			System.out.println();
+		}
+	}
+
+	public static void printAllFrequencies() {
+		for (Function function : functions)
+			function.printFrequencies();
+	}
+
+	public void decreaseFrequenciesAt(int index) {
+		frequencies[index] = frequencies[index] * MAX_SIMILARITY
+				/ (MAX_SIMILARITY + 1);
 	}
 }

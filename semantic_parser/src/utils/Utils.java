@@ -1,5 +1,7 @@
 package utils;
 
+import main.SemanticParser;
+import edu.illinois.cs.cogcomp.indsup.learning.FeatureVector;
 import jpl.Term;
 
 public class Utils {
@@ -19,5 +21,15 @@ public class Utils {
 		// if (term.isFloat())
 		return Double.valueOf(term.floatValue());
 		// return Integer.valueOf(term.intValue());
+	}
+
+	public static void normalizeFeatureVector(FeatureVector featureVector) {
+		double max = 0;
+		double[] values = featureVector.getValue();
+		for (int i = 0; i < SemanticParser.NUMBER_OF_FEATURES; i++) {
+			if (max < values[i])
+				max = values[i];
+		}
+		featureVector.normalize(max);
 	}
 }

@@ -3,6 +3,7 @@ package aggressive_learning;
 import java.util.Arrays;
 import java.util.HashSet;
 
+import main.SemanticParser;
 import jpl.Term;
 import jpl.Util;
 import edu.illinois.cs.cogcomp.indsup.inference.IStructure;
@@ -66,15 +67,18 @@ public class OutputStructure implements IStructure {
 	}
 
 	private FeatureVector computFeatureVector() {
-		FeatureVector featureVector = new FeatureVector(new int[] { 1, 2, 3 },
-				new double[] { 0, 0, 0 });
+		int[] temp = new int[SemanticParser.NUMBER_OF_FEATURES];
+		for (int i = 0; i < SemanticParser.NUMBER_OF_FEATURES; i++)
+			temp[i] = i + 1;
+		FeatureVector featureVector = new FeatureVector(temp,
+				new double[SemanticParser.NUMBER_OF_FEATURES]);
 		for (int i = 0; i < sentence.getNumberOfConstituents(); i++) {
 			for (int j = 0; j < Function.getNumberOfFunctions(); j++) {
 				if (wordsFunctionsMapping[i][j])
 					featureVector = FeatureVector.plus(
 							featureVector,
-							new FeatureVector(new int[] { 1, 2, 3 }, Function
-									.getFunctions().get(j)
+							new FeatureVector(temp, Function.getFunctions()
+									.get(j)
 									.getFeatures(sentence.getConstituent(i))));
 				for (int k = 0; k < sentence.getNumberOfConstituents(); k++) {
 					for (int l = 0; l < Function.getNumberOfFunctions(); l++) {
@@ -82,7 +86,7 @@ public class OutputStructure implements IStructure {
 							featureVector = FeatureVector
 									.plus(featureVector,
 											new FeatureVector(
-													new int[] { 1, 2, 3 },
+													temp,
 													Function.getFunctions()
 															.get(j)
 															.getFeatures(

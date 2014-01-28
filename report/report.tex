@@ -1,35 +1,68 @@
-\documentclass[12pt]{article}
+\documentclass[oneside, 12pt]{book} 
+\usepackage{multirow}
+
+\title{Semantic parsing for Vietnamese Question Answering System}
+\author{Name: Vu Xuan Tung\\
+Student ID: 1310007 \\
+School of Information Science}
+
+\date{30/1/2014}
+
 \usepackage[numbers]{natbib}
 \usepackage[T5,T1]{fontenc}
 \usepackage{amsmath}
+\usepackage{graphicx}
+
+\usepackage{indentfirst}
+\usepackage[top=2.5cm, bottom=3cm, left=3cm, right=2cm]{geometry}
+
+\linespread{1.3}
+\setlength{\parindent}{1cm}
+\setlength{\parskip}{6pt}
 
 %\linespread{0.96}
 
 \begin{document}
-
-\title{Semantic parsing for Vietnamese Question Answering System
-%\titlenote{}
-}
-\scriptsize
-
+\fontsize{13pt}{18pt}\selectfont
 \maketitle
+\frontmatter
+\usepackage{array}
 
-\begin{abstract}
+\input{advisor}
+
+\chapter*{\centering Abstract}
 \input{abstract}
-\end{abstract}
+
+%tables of contents
+\tableofcontents
+
+%\addcontentsline{toc}{chapter}{List of Figures}
+%\listoffigures
+%
+%\addcontentsline{toc}{chapter}{List of Tables}
+%\listoftables
+
+\mainmatter
 
 %introduction
+\chapter{ Introduction}
 \input{introduction}
 
 %Computer-understandable language
+\chapter{Computer-understandable language}
 \input{c-u}
 
 %Overview of VGQAS
+\chapter{VGQAS overview}
 \input{system-overview}
 
 %Semantic parsing model
+\chapter{Semantic parsing model}
 \input{model}
 
+\input{experiment}
+
+\addcontentsline{toc}{chapter}{References}
 \bibliographystyle{plainnat}
 \bibliography{thesis}
 
