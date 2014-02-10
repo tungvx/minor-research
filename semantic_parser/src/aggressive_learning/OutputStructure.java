@@ -131,16 +131,26 @@ public class OutputStructure implements IStructure {
 	}
 
 	public boolean isResultCorrect() {
-		if (results == null)
-			return output == null;
-		if (output == null)
+		return compareOutputs(results, output);
+	}
+
+	public boolean compareOutputs(Term term) {
+		return compareOutputs(output, term);
+	}
+
+	private boolean compareOutputs(Term term1, Term term2) {
+		if (term1 == null)
+			return term2 == null;
+		if (term2 == null)
 			return false;
-		String[] stringResults = Util.atomListToStringArray(results);
-		String[] stringOutput = Util.atomListToStringArray(output);
-		if (stringOutput == null || stringResults == null)
-			return results.equals(output);
-		HashSet<String> set1 = new HashSet<String>(Arrays.asList(stringResults));
-		HashSet<String> set2 = new HashSet<String>(Arrays.asList(stringOutput));
+		if (term1.equals(term2))
+			return true;
+		String[] stringTerm1 = Util.atomListToStringArray(term1);
+		String[] stringTerm2 = Util.atomListToStringArray(term2);
+		if (stringTerm1 == null || stringTerm2 == null)
+			return term1.equals(term2);
+		HashSet<String> set1 = new HashSet<String>(Arrays.asList(stringTerm1));
+		HashSet<String> set2 = new HashSet<String>(Arrays.asList(stringTerm2));
 		return set1.equals(set2);
 	}
 

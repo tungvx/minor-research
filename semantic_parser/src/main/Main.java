@@ -32,13 +32,14 @@ public class Main {
 	public static void main(String[] args) {
 		// readData();
 		int numberth = 250;
-		List<OutputStructure> trainingData = readWorkingData(TRAINING_FILE)
-				.subList(numberth - 1, numberth);
 		// List<OutputStructure> trainingData = readWorkingData(TRAINING_FILE)
-		// .subList(0, numberth);
+		// .subList(numberth - 1, numberth);
+		List<OutputStructure> trainingData = readWorkingData(TRAINING_FILE)
+				.subList(0, numberth);
 		double[] w = { 1, 1 };
-		Function.setNotTrainging();
-		executeParsing(trainingData, w);
+		// Function.setNotTrainging();
+		trainingFucnCompPre(trainingData, w);
+		// executeParsing(trainingData, w);
 
 		// Direct learning
 		// w = directLearning(trainingData, w);
@@ -118,6 +119,35 @@ public class Main {
 				return contained;
 		}
 		return false;
+	}
+
+	private static void trainingFucnCompPre(List<OutputStructure> trainingData,
+			double[] w) {
+		boolean newSample = true;
+		while (newSample) {
+			newSample = false;
+			for (OutputStructure outputStructure : trainingData) {
+				System.out.print(trainingData.indexOf(outputStructure) + ": "
+						+ outputStructure.getResults() + " - ");
+				// OutputStructure outputStructure = trainingData.get(0);
+				SemanticParser parser = new SemanticParser(
+						Function.getFunctions(), outputStructure.getSentence(),
+						outputStructure.getResults(), w);
+
+				parser.addObjectivesAndContraints();
+				// System.out.println("Start solving");
+				OutputStructure tempOutputStructure = parser.parse();
+				tempOutputStructure.setResults(outputStructure.getResults());
+				if (!tempOutputStructure.compareOutputs(outputStructure
+						.getOutput())) {
+					tempOutputStructure.copyResults(outputStructure);
+					newSample = true;
+				}
+
+				System.out.println(tempOutputStructure.getOutput());
+			}
+		}
+
 	}
 
 	private static double[] agressiveLearning(
