@@ -1,4 +1,4 @@
-\chapter{Experiment}
+\section{Experiment}
 We use the Geoquery domain for evaluating our system. It consists of a database and Prolog query language for U.S. geographical facts. The corpus has 880 English tokenized queries; each query is paired with a Prolog query. We use Google Translate API to translate the English queries into Vietnamese ones. The translation contains many errors as the result of some word-word translations. We then manually correct each query to produce meaningful Vietnamese queries. 
 
 Following the experiment in \cite{Clarke:2010:DSP:1870568.1870571}, we randomly select 250 queries for training, 250 other queries for testing from the above 880 queries. Our experiment is used to answer the following doubt:
@@ -8,7 +8,7 @@ Following the experiment in \cite{Clarke:2010:DSP:1870568.1870571}, we randomly 
   \item How do two learning approaches of \cite{Clarke:2010:DSP:1870568.1870571} perform in our system?
 \end{enumerate}
 
-\section{What are the effects of dynamic compositional preferences learning?}
+\subsection{What are the effects of dynamic compositional preferences learning?}
 We set up the experiment that when calculating the score for functions composition, the second feature is the same as the first one. That means they are both computed based on the distance of two tokens. The result is described in table \ref{d-c-p-eff}. We can see that applying this strategy improves the accuracy of the system by $4.4\%$ and $3.2\%$ for training data and testing data respectively. We also may wonder that if some set of questions is asked many times by users, how does this strategy perform? The last column of table \ref{d-c-p-eff} shows that if we repeatedly run the training data 10 times, then the final result on the training data is very surprising, $62\%$ is reported. In addition, if we run on testing data after running 10 times on training data, the accuracy for testing data is not significantly affected. It decreases by 1.6\%. 
 \begin{table}[h] 
 	\begin{center}
@@ -26,7 +26,7 @@ We set up the experiment that when calculating the score for functions compositi
     \label{d-c-p-eff}
 \end{table}
 
-\section{How do two learning approaches of \cite{Clarke:2010:DSP:1870568.1870571} perform in our system?}
+\subsection{How do two learning approaches of \cite{Clarke:2010:DSP:1870568.1870571} perform in our system?}
 We also implemented two learning mechanisms mentioned in \cite{Clarke:2010:DSP:1870568.1870571}. But the "Direct Approach" or Binary classification did not successfully learn the weight vector. The learned vector contains negative coefficients. This is because the way we choose the feature of "Word-Function mapping" is simple, just being word matching. We need some semantics features which measure the semantic similarity between words. \citeauthor{Clarke:2010:DSP:1870568.1870571} in \cite{Clarke:2010:DSP:1870568.1870571} use Wordnet for this purpose. Unfortunately, we do not have Wordnet for Vietnamese. But we had some ideas for this problem. For instance, we can use word2vec, a tool of Google. This is left for our future works.
 
 On the other hand, "Aggressive approach" still can learn the weight vector, but when applying to test data, the result is not improved, namely about $51\%$. In the future, we need to investigate more about this issue to take the advantage of learning methods.

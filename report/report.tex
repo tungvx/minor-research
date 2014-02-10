@@ -1,4 +1,4 @@
-\documentclass[oneside, 12pt]{book} 
+\documentclass[11pt,twocolumn]{article}
 \usepackage{multirow}
 
 \title{Semantic parsing for Vietnamese Question Answering System}
@@ -14,55 +14,37 @@ School of Information Science}
 \usepackage{amsmath}
 \usepackage{graphicx}
 
-\usepackage{indentfirst}
-\usepackage[top=2.5cm, bottom=3cm, left=3cm, right=2cm]{geometry}
-
-\linespread{1.3}
-\setlength{\parindent}{1cm}
-\setlength{\parskip}{6pt}
 
 %\linespread{0.96}
 
 \begin{document}
-\fontsize{13pt}{18pt}\selectfont
 \maketitle
-\frontmatter
 
-\input{advisor}
+%\input{advisor}
 
-\chapter*{\centering Abstract}
+\section{Abstract}
 \input{abstract}
 
-%tables of contents
-\tableofcontents
-
-\addcontentsline{toc}{chapter}{List of Figures}
-\listoffigures
-
-\addcontentsline{toc}{chapter}{List of Tables}
-\listoftables
-
-\mainmatter
 
 %introduction
-\chapter{ Introduction}
+\section{ Introduction}
 \input{introduction}
 
 %Computer-understandable language
-\chapter{Computer-understandable language}
+\section{Computer-understandable language}
 \input{c-u}
 
 %Overview of VGQAS
-\chapter{VGQAS overview}
+\section{VGQAS overview}
 \input{system-overview}
 
 %Semantic parsing model
-\chapter{Semantic parsing model}
+\section{Semantic parsing model}
 \input{model}
 
 \input{experiment}
 
-\addcontentsline{toc}{chapter}{References}
+\addcontentsline{toc}{section}{References}
 \bibliographystyle{plainnat}
 \bibliography{thesis}
 
