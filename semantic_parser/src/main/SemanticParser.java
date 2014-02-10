@@ -284,10 +284,11 @@ public class SemanticParser {
 							outputStructure.setFunctionComposition(i, j, k, l);
 							appendResult(finalComposition, new int[] { i, j },
 									new int[] { k, l });
-							System.out.println(sentence.getConstituent(i) + ":"
-									+ functions.get(j).getName() + " - "
-									+ sentence.getConstituent(k) + ":"
-									+ functions.get(l).getName());
+							// System.out.println(sentence.getConstituent(i) +
+							// ":"
+							// + functions.get(j).getName() + " - "
+							// + sentence.getConstituent(k) + ":"
+							// + functions.get(l).getName());
 							// System.out.println(i + " "
 							// + sentence.getConstituent(i) + ":" + j
 							// + " "
@@ -331,7 +332,7 @@ public class SemanticParser {
 				var = (char) (var - functions.get(temp[1]).getNumberOfArgs() + 1);
 			}
 
-			System.out.println(queryString);
+			// System.out.println(queryString);
 
 			outputStructure.setOutput(QueryObject.execute(queryString));
 

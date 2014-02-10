@@ -37,9 +37,9 @@ public class Main {
 		List<OutputStructure> trainingData = readWorkingData(TRAINING_FILE)
 				.subList(0, numberth);
 		double[] w = { 1, 1 };
-		// Function.setNotTrainging();
-		trainingFucnCompPre(trainingData, w);
-		// executeParsing(trainingData, w);
+		Function.setNotTrainging();
+		// trainingFucnCompPre(trainingData, w);
+		executeParsing(trainingData, w);
 
 		// Direct learning
 		// w = directLearning(trainingData, w);
@@ -126,9 +126,10 @@ public class Main {
 		boolean newSample = true;
 		while (newSample) {
 			newSample = false;
+			int correct = 0;
 			for (OutputStructure outputStructure : trainingData) {
-				System.out.print(trainingData.indexOf(outputStructure) + ": "
-						+ outputStructure.getResults() + " - ");
+				// System.out.print(trainingData.indexOf(outputStructure) + ": "
+				// + outputStructure.getResults() + " - ");
 				// OutputStructure outputStructure = trainingData.get(0);
 				SemanticParser parser = new SemanticParser(
 						Function.getFunctions(), outputStructure.getSentence(),
@@ -138,14 +139,24 @@ public class Main {
 				// System.out.println("Start solving");
 				OutputStructure tempOutputStructure = parser.parse();
 				tempOutputStructure.setResults(outputStructure.getResults());
-				if (!tempOutputStructure.compareOutputs(outputStructure
-						.getOutput())) {
+				if (tempOutputStructure.isResultCorrect()) {
+					correct++;
+				}
+				// System.out.println(tempOutputStructure.getOutput());
+				if ((tempOutputStructure.isResultCorrect() && !outputStructure
+						.isResultCorrect())
+						|| (!tempOutputStructure.isResultCorrect() && outputStructure
+								.isResultCorrect())) {
+					System.out.println(trainingData.indexOf(outputStructure)
+							+ ": " + outputStructure.getOutput() + " - "
+							+ tempOutputStructure.getOutput());
 					tempOutputStructure.copyResults(outputStructure);
 					newSample = true;
 				}
-
-				System.out.println(tempOutputStructure.getOutput());
 			}
+			System.out.println("Correct: " + correct + "/"
+					+ trainingData.size() + " = " + (double) correct
+					/ trainingData.size());
 		}
 
 	}
