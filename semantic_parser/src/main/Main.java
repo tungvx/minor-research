@@ -38,7 +38,7 @@ public class Main {
 				.subList(0, numberth);
 		double[] w = { 1, 1 };
 		Function.setNotTrainging();
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 100; i++) {
 			executeParsing(trainingData, w);
 		}
 
@@ -49,12 +49,12 @@ public class Main {
 		// w = agressiveLearning(trainingData, w);
 		// System.out.println("After training: " + w[0] + ", " + w[1]);
 		// executeParsing(trainingData, w);
-		List<OutputStructure> testingData = readWorkingData(TESTING_FILE);
+		// List<OutputStructure> testingData = readWorkingData(TESTING_FILE);
 		// List<OutputStructure> testingData = readWorkingData(TESTING_FILE)
 		// .subList(numberth - 1, numberth);
 		// executeParsing(testingData, w);
 		// Function.setNotTrainging();
-		executeParsing(testingData, w);
+		// executeParsing(testingData, w);
 	}
 
 	private static double[] directLearning(List<OutputStructure> trainingData,
@@ -111,7 +111,8 @@ public class Main {
 		for (FeatureVector featureVector2 : list) {
 			boolean contained = true;
 			for (int i = 0; i < SemanticParser.NUMBER_OF_FEATURES; i++) {
-				if (featureVector.getValue()[i] != featureVector2.getValue()[i]) {
+				if (Math.abs(featureVector.getValue()[i]
+						- featureVector2.getValue()[i]) > 0.00001) {
 					contained = false;
 				}
 			}

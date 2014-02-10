@@ -5,7 +5,7 @@ Following the experiment in \cite{Clarke:2010:DSP:1870568.1870571}, we randomly 
 
 \begin{enumerate}
   \item What are the effects of dynamic compositional preferences learning?
-  \item How important are two learning approaches?
+  \item How do two learning approaches of \cite{Clarke:2010:DSP:1870568.1870571} perform in our system?
 \end{enumerate}
 
 \section{What are the effects of dynamic compositional preferences learning?}
@@ -25,3 +25,8 @@ We set up the experiment that when calculating the score for functions compositi
 	\caption{Accuracy of model on traing data and testing data. "No dynamic learning" means that we do not learn compositional preferences during running time of system. "Dynamic learning" means that we apply this kind of learning. in "Dynamic learning with repetition on training data", we run the system 10 times on training data; then testing data is also experimented}
     \label{d-c-p-eff}
 \end{table}
+
+\section{How do two learning approaches of \cite{Clarke:2010:DSP:1870568.1870571} perform in our system?}
+We also implemented two learning mechanisms mentioned in \cite{Clarke:2010:DSP:1870568.1870571}. But the "Direct Approach" or Binary classification did not successfully learn the weight vector. The learned vector contains negative coefficients. This is because the way we choose the feature of "Word-Function mapping" is simple, just being word matching. We need some semantics features which measure the semantic similarity between words. \citeauthor{Clarke:2010:DSP:1870568.1870571} in \cite{Clarke:2010:DSP:1870568.1870571} use Wordnet for this purpose. Unfortunately, we do not have Wordnet for Vietnamese. But we had some ideas for this problem. For instance, we can use word2vec, a tool of Google. This is left for our future works.
+
+On the other hand, "Aggressive approach" still can learn the weight vector, but when applying to test data, the result is not improved, namely about $51\%$. In the future, we need to investigate more about this issue to take the advantage of learning methods.
