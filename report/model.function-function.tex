@@ -20,14 +20,14 @@ Suppose we need to compute the feature vector of $f_1$ and $f_2$ when we want to
 Until now, we have only one feature for describe the composition capacity of two functions. Another one is the feature which describe the compositional preferences of functions. A function is usually composed with some other functions. For example, $state$ function tend to receive $stateId$ function as its argument. In our approach, this feature is learned automatically through the running time of the system. 
 
 Suppose $f1$ as a variable $p$ denoting how likely it will be composed with $f2$ to form $f1(f2(arg))$, and this composition appears in a result of semantic parser. By receiving the feedback from the outside world, we may have the answer that the result is correct or not.
-\subsubsubsection*{If the result is correct}
+\subsubsection*{If the result is correct}
 In this case, we will increase the value of $p$ by formula \ref{increase-frequency}. It is clear that $p$ will be increased but it is always smaller than $M$, the maximum value of a feature.
 \begin{equation}
 \label{increase-frequency}
 p = \frac{(p + 1)M}{M+1}
 \end{equation}
 
-\subsubsubsection*{If the result is wrong}
+\subsubsection*{If the result is wrong}
 If the user says that he does not expect this answer, p needs to be decreased. Formula \ref{decrease-frequency} make the value of $p$ smaller. $p$ is also supposed to be greater or equal than $0$. 
 \begin{equation}
 \label{decrease-frequency}
