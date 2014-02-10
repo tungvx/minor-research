@@ -32,15 +32,13 @@ public class Main {
 	public static void main(String[] args) {
 		// readData();
 		int numberth = 250;
-		// List<OutputStructure> trainingData = readWorkingData(TRAINING_FILE)
-		// .subList(numberth - 1, numberth);
 		List<OutputStructure> trainingData = readWorkingData(TRAINING_FILE)
-				.subList(0, numberth);
+				.subList(numberth - 1, numberth);
+		// List<OutputStructure> trainingData = readWorkingData(TRAINING_FILE)
+		// .subList(0, numberth);
 		double[] w = { 1, 1 };
 		Function.setNotTrainging();
-		for (int i = 0; i < 100; i++) {
-			executeParsing(trainingData, w);
-		}
+		executeParsing(trainingData, w);
 
 		// Direct learning
 		// w = directLearning(trainingData, w);

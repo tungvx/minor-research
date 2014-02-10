@@ -5,6 +5,6 @@ These instructions are for windows:
 	.  Add "C:\Program Files\glpk-4.52\w32" for 32-bit computer the environment variable PATH
 2. install Lpsolve55j
 3. install javailp
-4. install jpl
+4. install jpl: jpl is included in swi-prolog. Just add bin folder of prolog to the environment path
 5. install weka
 6. install gson-2.2.4.jar
