@@ -16,7 +16,7 @@ Suppose we need to compute the feature vector of $f_1$ and $f_2$ when we want to
 \label{f-f.eg2}
 \end{figure}
 
-\subsubsection{A method for learning preference of functions compositions}
+\subsubsection{A method of dynamic learning preference of functions compositions}
 Until now, we have only one feature for describe the composition capacity of two functions. Another one is the feature which describe the compositional preferences of functions. A function is often composed with only a set some other functions. For example, $state$ function tends to receive $stateId$ function as its argument. In our approach, this feature is learned automatically through the running time of the system. 
 
 Suppose $f1$ as a variable $p$ denoting how likely it will be composed with $f2$ to form $f1(f2(arg))$, and this composition appears in a result of semantic parser. By receiving the feedback from the outside world, we may have the answer that the result is correct or not.

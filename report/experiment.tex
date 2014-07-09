@@ -9,11 +9,11 @@ Following the experiment in \cite{Clarke:2010:DSP:1870568.1870571}, we randomly 
 \end{enumerate}
 
 \subsection{What are the effects of dynamic compositional preferences learning?}
-In this experiment, we use "Aggressive arrpoach" of machine learning in \cite{Clarke:2010:DSP:1870568.1870571}. The experiment result is described in table \ref{d-c-p-eff}. 
+In this experiment, we run our system with and without dynamic learning of compositional preferences. The experiment result is described in table \ref{d-c-p-eff}. 
 
-"No dynamic learning" row means that we do not use dynamic compositional preferences learning. When calculating the features for functions compositions, the second feature is the same as the first one. That means they are both computed based on the distance of two tokens.
+"No dynamic learning" row means that we do not use dynamic compositional preferences learning. When calculating the features for function-function compositions, the second feature is the same as the first one. That means they are both computed based on the vector of distance between two tokens.
 
-It is clear from the table that the strategy of dynamic preferences computation improves the accuracy of the system by $4.4\%$ and $3.2\%$ for training data and testing data respectively. We also may wonder that if some set of questions is asked many times by users, how does this strategy perform? The last column of table \ref{d-c-p-eff} shows that if we repeatedly run the training data 10 times, then the final result on the training data is surprisingly $62\%$. In addition, if we run on testing data after running 10 times on training data, the accuracy for testing data is not significantly affected. It decreases by 1.6\%. 
+It is clear from the table that the strategy of dynamic preferences computation improves the accuracy of the system by $4.4\%$ and $3.2\%$ for training data and testing data respectively. We also may wonder that if some set of questions is asked many times by users, how does this strategy perform? The last row of table \ref{d-c-p-eff} shows that if we repeatedly run the training data 10 times, then the final result on the training data is surprisingly $62\%$. In addition, if we run on testing data after running 10 times on training data, the accuracy for testing data is not significantly affected. It decreases by 1.6\%. 
 \begin{table}[h] 
 	\begin{center}
 	    \begin{tabular}{| p{5cm} | c | c |}
@@ -31,6 +31,6 @@ It is clear from the table that the strategy of dynamic preferences computation 
 \end{table}
 
 \subsection{How do two learning approaches of \cite{Clarke:2010:DSP:1870568.1870571} perform in our system?}
-We also implemented two learning mechanisms mentioned in \cite{Clarke:2010:DSP:1870568.1870571}. However, the "Direct Approach" or Binary classification did not successfully learn the weight vector. The learned vector contains negative coefficients. This is because the way we choose the feature of "Word-Function mapping" is simple, just being word matching. We need some semantics features which measure the semantic similarity between words. \citeauthor{Clarke:2010:DSP:1870568.1870571} in \cite{Clarke:2010:DSP:1870568.1870571} use Wordnet for this purpose. Unfortunately, we do not have Wordnet for Vietnamese. But we had some ideas for this problem. For instance, we can use word2vec, a tool of Google. This is left for our future works.
+We implemented two learning mechanisms mentioned in \cite{Clarke:2010:DSP:1870568.1870571}. However, the "Direct Approach" or Binary classification did not successfully learn the weight vector. The learned vector contains negative values. This is because the way we choose the feature of "Token-Function mapping" is simple, just being word matching. We need some semantics features which measure the semantic similarity between words. \citeauthor{Clarke:2010:DSP:1870568.1870571} in \cite{Clarke:2010:DSP:1870568.1870571} used Wordnet for this purpose. Unfortunately, we do not have Wordnet for Vietnamese. But we had an idea of using word2vec, a tool of Google, to tackle this problem. This is left for our future works.
 
-On the other hand, "Aggressive approach" performs quite well as illustrated in table \ref{d-c-p-eff}. Without machine learning, the result of both training data and testing data is around $20\%$.
+On the other hand, "Aggressive approach" can learn the weight vector but the result is not improved, around $51\%$. In future, we need to investigate more about this to take advantage from machine learning.

@@ -1,8 +1,10 @@
 \label{sec:conclusion}
-We developed a question answering system using new paradigm of machine learning. The trained data need not to be fully annotated. We only need the questions and the corresponding correct answers. The result at around $55\%$ of accuracy is quite good for Vietnamese semantic parser. However, the current way of calculating features are still quite simple. Improving this function would make our system more powerful. We propose a numbers of possibilities:
+We developed a question answering system using new paradigm of learning. The trained data need not to be fully annotated. We only need the questions and the corresponding correct answers. The result at around $55\%$ of accuracy is quite good for Vietnamese semantic parser. However, the current way of calculating features are still quite simple. Improving this function would make our system more powerful. We propose a numbers of possibilities:
 \begin{enumerate}
   \item \citeauthor{Clarke:2010:DSP:1870568.1870571} in \cite{Clarke:2010:DSP:1870568.1870571} use Wordnet for computing similarity between English words. However, Wordnet is not available for Vietnamese. We plan to use word2vec developed by Google to build a model of similarity between Vietnamese words. After that our system can retrieve the similarity from this model.
   \item For function-function mapping, we can first apply syntax parsing for the sentence first. If, for example, two tokens are both in "S" (subject), their two mapped functions are more likely to be combined with each other. 
 \end{enumerate} 
+
+Machine learning methods in \cite{Clarke:2010:DSP:1870568.1870571} does not work well in our system. In the future, we need to investigate more about this.
 
 Currently, we configure the logical functions and database type in one text file. This make the system flexible in terms of database. We can change the database from geometric to others. We can also change the type of database from Prolog to, e.g., MySql. Supporting MySql is also one of our future work.
