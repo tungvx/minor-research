@@ -1,10 +1,10 @@
 \label{sec:system-overview}
-The goal of the system is to answer the questions of users properly. The core of our system is semantic parsing. As presented, given an input sentence $x$, our semantic parser tries to make a mapping $y$ between tokens and functions. Then from the mapped functions, it will search for a composition $z$ of them for final logical form. The problem is that for each $x$, there may be some acceptable $y$; and for each $y$, there are some acceptable $z$. But semantic parser is required to choose only one pair of $y$ and $z$. 
+The goal of the system is to answer the questions of users properly. The core part of our system is semantic parsing. As presented, given an input sentence $x$, our semantic parser tries to make a mapping $y$ between tokens and functions. Then from the mapped functions, it will search for a composition $z$ of them for final logical form. The problem is that for each $x$, there may be some acceptable $y$; and for each $y$, there are some acceptable $z$. But semantic parser is required to choose only one pair of $y$ and $z$. 
 
-Our system will consider all the possible cases and putting scores on relations between $x$ and $y$, $y$ and $z$. After that, it decides the best meaning representation in terms of the total scores of each pair of  mapping and composition. More precisely, the prediction function is as follow:
+Our system will consider all the possible cases and putting a score on each mapping in $y$ and $z$. After that, it decides the best meaning representation in terms of the total scores of each pair of mapping and composition. More precisely, the prediction function is as follow:
 \begin{equation}
 \label{prediction-1}
-\hat{y}, \hat{z} = arg \ max_{y,z} (score(x, y) + score(y,z) )
+\hat{y}, \hat{z} = arg \ max_{y,z} (score1(x, y) + score2(x,y,z) )
 \end{equation}
 We represent the $score$s by features vectors and weight vector. Let $\theta_1(x, y)$ and $\theta_2(y,z)$ be the feature vectors that represent relations between $x$ and $y$, $y$ and $z$ respectively. $w$ is the feature vector. Equation \ref{prediction-1} now become:
 \begin{equation}
